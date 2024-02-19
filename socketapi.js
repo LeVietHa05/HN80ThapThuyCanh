@@ -45,11 +45,31 @@ io.on("connection", (socket) => {
         console.log(`[/web/control] from ${data.clientID} via socket id: ${socket.id}`);
         console.log(data);
         try {
+            let res;
             for (key in data) {
-                let res = await SettingData.findOneAndUpdate({}, { [key]: data[key] }, { new: true })
-                console.log(res)
+                res = await SettingData.findOneAndUpdate({}, { [key]: data[key] }, { new: true })
+                // console.log(res)
             }
-            
+            let dataSentEsp = {}
+            //random messageID
+            dataSentEsp.messageID = Math.random().toString(36).substring(7);
+            dataSentEsp.control = {};
+            dataSentEsp.control.manualMode = res.manualMode;
+            dataSentEsp.control.isLightControl = res.isLightControl;
+            dataSentEsp.control.isInsectLightControl = res.isInsectLightControl;
+            dataSentEsp.control.isPump1Control = res.isPump1Control;
+            dataSentEsp.control.isPump2Control = res.isPump2Control;
+            dataSentEsp.control.isPump3Control = res.isPump3Control;
+            dataSentEsp.control.timeOnPumpTower = res.timeOnPumpTower;
+            dataSentEsp.control.timeOffPumpTower = res.timeOffPumpTower;
+            dataSentEsp.control.timeStartBtsTower = res.timeRangeBtsTower.split("-")[0];
+            dataSentEsp.control.timeEndBtsTower = res.timeRangeBtsTower.split("-")[1];
+            dataSentEsp.control.timeStartPumpTower = res.timeRangePumpTower.split("-")[0];
+            dataSentEsp.control.timeEndPumpTower = res.timeRangePumpTower.split("-")[1];
+            dataSentEsp.control.timeStartBtsHeater = res.timeRangeBtsHeater.split("-")[0];
+            dataSentEsp.control.timeEndBtsHeater = res.timeRangeBtsHeater.split("-")[1];
+            // console.log(dataSentEsp);
+            console.log("send control data to esp");
             socket.broadcast.emit("/esp/control", data);
         } catch (e) {
             console.log(e)
