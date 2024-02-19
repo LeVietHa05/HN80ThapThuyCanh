@@ -1,0 +1,350 @@
+<html>
+
+<head>
+  <title>Express</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+
+</head>
+
+<body>
+  <h1>Express</h1>
+  <p>Welcome to Express</p>
+  <span id="temp"> </span>
+  <span id="humi"> </span>
+  <span id="isRain"> </span>
+
+
+
+  <canvas class=" " id="tempChart"> </canvas>
+  <canvas class=" " id="humiChart"> </canvas>
+  <canvas class=" " id="waterTempChart"> </canvas>
+  <canvas class=" " id="phValChart"> </canvas>
+  <canvas class=" " id="tdsValChart"> </canvas>
+  <canvas class=" " id="luxChart"> </canvas>
+
+  <div>Manual Mode: <span id="manual" js-btn="1">OFF</span></div>
+  <div>Light Control: <span id="isLightControl" js-btn="1">OFF</span></div>
+  <div>Insect Light Control: <span id="isInsectLightControl" js-btn="1">OFF</span></div>
+  <div>Pump 1 Control: <span id="isPump1Control" js-btn="1">OFF</span></div>
+  <div>Pump 2 Control: <span id="isPump2Control" js-btn="1">OFF</span></div>
+  <div>Pump 3 Control: <span id="isPump3Control" js-btn="1">OFF</span></div>
+  <div>Time Range Bts Heater <br> ON:
+    <input type="time" id="timeRangeBtsHeaterStart"><br>
+    OFF: <input type="time" id="timeRangeBtsHeaterStop"> <br>
+    <span id="timeRangeBtsHeater" js-btn="1">set</span>
+  </div>
+  <div>Time Range Pump Tower <br> ON:
+    <input type="time" id="timeRangePumpTowerStart"><br>
+    OFF: <input type="time" id="timeRangePumpTowerStop"> <br>
+    <span id="timeRangePumpTower" js-btn="1">set</span>
+  </div>
+  <div>Time Range Bts Tower <br> ON:
+    <input type="time" id="timeRangeBtsTowerStart"><br>
+    OFF: <input type="time" id="timeRangeBtsTowerStop"> <br>
+    <span id="timeRangeBtsTower" js-btn="1">set</span>
+  </div>
+  <div>
+    <div>time On Pump Tower: <input type="number" id="timeOnPumpTowerOn" min="1"> (second)</div>
+    <div>time Off Pump Tower: <input type="number" id="timeOnPumpTowerOff" min="1"> (second)</div>
+    <div id="timeOnPumpTower" js-btn="1">set</div>
+  </div>
+
+  <script>
+    function getChartData(field, sort, limit) {
+      console.log(`getting chart data for ${field} with sort ${sort} and limit ${limit}`);
+      return fetch(`/api/v1/measure?field=${field}&sort=${sort}&limit=${limit}`)
+        .then(res => res.json())
+        .then(data => {
+          // console.table(data);
+          return data;
+        })
+    }
+
+    function getControlData() {
+      console.log('getting control data');
+      return fetch(`/api/v1/control`)
+        .then(res => res.json())
+        .then(data => {
+          console.table(data);
+          return data;
+        })
+    }
+
+    async function updateControlData() {
+      console.log('updating control data');
+      let controlData = await getControlData();
+      for (let key in controlData) {
+        if (key == "manualMode" || key == 'timeRangeBtsHeater' || key == 'timeRangePumpTower' || key == 'timeRangeBtsTower') {
+          continue;
+        }
+        control[key] = controlData[key];
+
+      }
+      control.manual = controlData.manualMode;
+      [control.timeRangeBtsHeater.start, control.timeRangeBtsHeater.end] = [controlData.timeRangeBtsHeater.split('-')[0], controlData.timeRangeBtsHeater.split('-')[1]];
+      [control.timeRangePumpTower.start, control.timeRangePumpTower.end] = [controlData.timeRangePumpTower.split('-')[0], controlData.timeRangePumpTower.split('-')[1]];
+      [control.timeRangeBtsTower.start, control.timeRangeBtsTower.end] = [controlData.timeRangeBtsTower.split('-')[0], controlData.timeRangeBtsTower.split('-')[1]];
+      // console.log(control);
+      manual.innerHTML = control.manual ? "ON" : "OFF";
+      isLightControl.innerHTML = control.isLightControl ? "ON" : "OFF";
+      isInsectLightControl.innerHTML = control.isInsectLightControl ? "ON" : "OFF";
+      isPump1Control.innerHTML = control.isPump1Control ? "ON" : "OFF";
+      isPump2Control.innerHTML = control.isPump2Control ? "ON" : "OFF";
+      isPump3Control.innerHTML = control.isPump3Control ? "ON" : "OFF";
+      timeRangeBtsHeater.innerHTML = `set: ${control.timeRangeBtsHeater.start} - ${control.timeRangeBtsHeater.end}`;
+      timeRangePumpTower.innerHTML = `set: ${control.timeRangePumpTower.start} - ${control.timeRangePumpTower.end}`;
+      timeRangeBtsTower.innerHTML = `set: ${control.timeRangeBtsTower.start} - ${control.timeRangeBtsTower.end}`;
+      timeOnPumpTower.innerHTML = `set: ON: ${control.timeOnPumpTower} - OFF: ${control.timeOffPumpTower}`;
+
+    }
+
+    updateControlData();
+
+    manual.addEventListener('click', () => {
+      control.manual = !control.manual;
+      manual.innerHTML = control.manual ? "ON" : "OFF";
+      //TODO: if (manual) then disable all the control
+      // here
+
+      socket.emit('/web/control', { manualMode: control.manual })
+    })
+
+    isLightControl.addEventListener('click', () => {
+      if (!control.manual) return alert('please turn on manual mode');
+      control.isLightControl = !control.isLightControl;
+      isLightControl.innerHTML = control.isLightControl ? "ON" : "OFF";
+      socket.emit('/web/control', { isLightControl: control.isLightControl })
+    })
+
+    isInsectLightControl.addEventListener('click', () => {
+      if (!control.manual) return alert('please turn on manual mode');
+      control.isInsectLightControl = !control.isInsectLightControl;
+      isInsectLightControl.innerHTML = control.isInsectLightControl ? "ON" : "OFF";
+      socket.emit('/web/control', { isInsectLightControl: control.isInsectLightControl })
+    })
+
+    isPump1Control.addEventListener('click', () => {
+      if (!control.manual) return alert('please turn on manual mode');
+      control.isPump1Control = !control.isPump1Control;
+      isPump1Control.innerHTML = control.isPump1Control ? "ON" : "OFF";
+      socket.emit('/web/control', { isPump1Control: control.isPump1Control })
+    })
+
+    isPump2Control.addEventListener('click', () => {
+      if (!control.manual) return alert('please turn on manual mode');
+      control.isPump2Control = !control.isPump2Control;
+      isPump2Control.innerHTML = control.isPump2Control ? "ON" : "OFF";
+      socket.emit('/web/control', { isPump2Control: control.isPump2Control })
+    })
+
+    isPump3Control.addEventListener('click', () => {
+      if (!control.manual) return alert('please turn on manual mode');
+      control.isPump3Control = !control.isPump3Control;
+      isPump3Control.innerHTML = control.isPump3Control ? "ON" : "OFF";
+      socket.emit('/web/control', { isPump3Control: control.isPump3Control })
+    })
+
+    timeRangeBtsHeater.addEventListener('click', () => {
+      if (!control.manual) return alert('please turn on manual mode');
+      if (!timeRangeBtsHeaterStart.value || !timeRangeBtsHeaterStop.value) {
+        alert('please fill in the time');
+        return;
+      }
+      control.timeRangeBtsHeater.start = timeRangeBtsHeaterStart.value;
+      control.timeRangeBtsHeater.end = timeRangeBtsHeaterStop.value;
+      timeRangeBtsHeater.innerHTML = `set: ${control.timeRangeBtsHeater.start} - ${control.timeRangeBtsHeater.end}`;
+      socket.emit('/web/control', { timeRangeBtsHeater: `${control.timeRangeBtsHeater.start}-${control.timeRangeBtsHeater.end}` })
+    })
+
+    timeRangePumpTower.addEventListener('click', () => {
+      if (!control.manual) return alert('please turn on manual mode');
+      if (!timeRangePumpTowerStart.value || !timeRangePumpTowerStop.value) {
+        alert('please fill in the time');
+        return;
+      }
+      control.timeRangePumpTower.start = timeRangePumpTowerStart.value;
+      control.timeRangePumpTower.end = timeRangePumpTowerStop.value;
+      timeRangePumpTower.innerHTML = `set: ${control.timeRangePumpTower.start} - ${control.timeRangePumpTower.end}`;
+      socket.emit('/web/control', { timeRangePumpTower: `${control.timeRangePumpTower.start}-${control.timeRangePumpTower.end}` })
+    })
+
+    timeRangeBtsTower.addEventListener('click', () => {
+      if (!control.manual) return alert('please turn on manual mode');
+      if (!timeRangeBtsTowerStart.value || !timeRangeBtsTowerStop.value) {
+        alert('please fill in the time');
+        return;
+      }
+      control.timeRangeBtsTower.start = timeRangeBtsTowerStart.value;
+      control.timeRangeBtsTower.end = timeRangeBtsTowerStop.value;
+      timeRangeBtsTower.innerHTML = `set: ${control.timeRangeBtsTower.start} - ${control.timeRangeBtsTower.end}`;
+      socket.emit('/web/control', { timeRangeBtsTower: `${control.timeRangeBtsTower.start}-${control.timeRangeBtsTower.end}` })
+    })
+
+    timeOnPumpTower.addEventListener('click', () => {
+      if (!control.manual) return alert('please turn on manual mode');
+      if (!timeOnPumpTowerOn.value || !timeOnPumpTowerOff.value) {
+        alert('please fill in the time');
+        return;
+      }
+      control.timeOnPumpTower = timeOnPumpTowerOn.value;
+      control.timeOffPumpTower = timeOnPumpTowerOff.value;
+      timeOnPumpTower.innerHTML = `set: ON: ${control.timeOnPumpTower} - OFF: ${control.timeOffPumpTower}`;
+      socket.emit('/web/control', { timeOnPumpTower: control.timeOnPumpTower, timeOffPumpTower: control.timeOffPumpTower })
+    })
+
+
+  </script>
+  <script src="../socket.io/socket.io.js"></script>
+  <script>
+    //a envir class to save the data
+    class Envir {
+      constructor(number, unit, name, el = null) {
+        this.number = number;
+        this.unit = unit;
+        this.name = name;
+        this.el = el;
+        this.update();
+      }
+      get getValue() {
+        return `${this.number} ${this.unit}`;
+      }
+      set setValue(val) {
+        this.number = val;
+        if (this.el) {
+          this.el.innerHTML = `${this.number} ${this.unit}`;
+        }
+      }
+      update() {
+        if (this.el) {
+          this.el.innerHTML = `${this.number} ${this.unit}`;
+        }
+      }
+
+    }
+
+    //save the lastest data
+    let temp = new Envir(25, "°C", "nhiệt độ", document.getElementById('temp'));
+    let humi = new Envir(50, "%", "độ ẩm", document.getElementById('humi'));
+    let phVal = new Envir(7, "", "độ pH");
+    let tdsVal = new Envir(500, "ppm", "TDS");
+    let waterTemp = new Envir(25, "°C", "nhiệt độ nước");
+    let lux = new Envir(1000, "lux", "ánh sáng");
+    let isRain = new Envir(0, "", "mưa");
+    let isWater1LevelLow = new Envir(0, "", "mực nước 1");
+    let isWater2LevelLow = new Envir(0, "", "mực nước 2");
+    let isWater3LevelLow = new Envir(0, "", "mực nước 3");
+    let isBtsHeaterOn = new Envir(0, "", "sò nhiệt");
+
+    let envirs = { temp: temp, humi: humi, phVal: phVal, tdsVal: tdsVal, waterTemp: waterTemp, lux: lux, isRain: isRain, isWater1LevelLow: isWater1LevelLow, isWater2LevelLow: isWater2LevelLow, isWater3LevelLow: isWater3LevelLow, isBtsHeaterOn: isBtsHeaterOn };
+    //save the control data 
+    let control = {
+      //TODO: this is input type button
+      manual: 0, //true or false
+      isLightControl: 0, //true or false
+      isInsectLightControl: 0, //true or false
+      isPump1Control: 0, //true or false
+      isPump2Control: 0, //true or false
+      isPump3Control: 0, //true or false
+      //TODO: this is input type time
+      timeRangeBtsHeater: { //trong thời điểm nào thì sò nhiệt hoạt động
+        start: "00:00",
+        end: "00:00",
+      },
+      //TODO: this is input type time
+      timeRangePumpTower: { //trong thời điểm nào thì bơm (của tháp chính) hoạt động
+        start: "00:00",
+        end: "00:00",
+      },
+      //TODO: this is input type time
+      timeRangeBtsTower: { //trong thời điểm nào thì tháp xoay hoạt động
+        start: "00:00",
+        end: "00:00",
+      },
+      //TODO: this is input type number
+      timeOnPumpTower: 0, //thời gian bơm hoạt động liên tục (giây)
+      timeOffPumpTower: 0, //thời gian bơm nghỉ sau khi hoạt động (giây)
+    }
+
+
+    var socket = io();
+    socket.on('connect', function () {
+      console.log('connected');
+    });
+    socket.on('disconnect', function () {
+      console.log('disconnected');
+    });
+
+    socket.on("/web/measure", (data) => {
+      console.log(data);
+      for (let key in data) {
+        if (envirs[key]) {
+          envirs[key].setValue = data[key];
+        }
+      }
+    })
+
+
+
+  </script>
+  <!-- chart script -->
+  <script>
+    function chartConfigGen(label, data, color) {
+      return {
+        type: 'line',
+        data: {
+          labels: data.map(d => {
+            let date = new Date(d.time);
+            return `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+          }),
+          datasets: [{
+            label: label.name,
+            data: data.map(d => d[label.id]),
+            borderColor: color,
+            tension: 0.1,
+          }],
+          options: {
+            responsive: true,
+          }
+        },
+        options: {
+          responsive: true,
+        },
+      }
+    }
+
+    let labels = [{ name: "Nhiệt độ", id: "temp" }, { name: "Độ ẩm", id: "humi" }, { id: "waterTemp", name: "Nhiệt độ nước" }, { id: "phVal", name: "pH" }, { id: "tdsVal", name: "TDS" }, { id: "lux", name: "Lux" }]
+    let chartIDs = ["tempChart", "humiChart", "waterTempChart", "phValChart", "tdsValChart", "luxChart"]
+    let colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange']
+
+    let charts = [];
+    let chartConfigs = [];
+    for (let i = 0; i < labels.length; i++) {
+      getChartData(labels[i].id, '-1', 10)
+        .then(a => {
+          // console.log(a);
+          chartConfigs[i] = chartConfigGen(labels[i], a, colors[i]);
+          charts[i] = new Chart(document.getElementById(chartIDs[i]), chartConfigs[i]);
+        })
+    }
+
+
+    function addNewData(chart, label, data) {
+      chart.data.labels.push(label);
+      chart.data.datasets.forEach((dataset) => {
+        dataset.data.push(data);
+      });
+      chart.update();
+    }
+    function removeChartData(chart) {
+      chart.data.labels.shift();
+      chart.data.datasets.forEach((dataset) => {
+        dataset.data.shift();
+      });
+      chart.update();
+    }
+  </script>
+</body>
+
+
+</html>
