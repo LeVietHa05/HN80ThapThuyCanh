@@ -1,0 +1,152 @@
+body {
+  background-color: rgba(238, 114, 20, 1);
+}
+
+main {
+  width: 80vw;
+  height: 80vh;
+  background-color: white;
+  border-radius: 2vw;
+  margin: 10vh auto;
+  display: flex;
+  flex-flow: row wrap;
+
+  @media screen and (max-width: 768px) {
+    flex-flow: column !important;
+  }
+
+  /* >> */
+  #loginLeft {
+    background-color: rgba(242, 242, 242, 1);
+    width: fit-content;
+    padding: 2vw;
+    border-radius: 2vw 0 0 2vw;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      border-radius: 2vw 2vw 0 0;
+    }
+
+    /* >> */
+    h1 {
+      font-size: 2vw;
+      font-weight: 700;
+      width: 100%;
+      text-align: center;
+
+      @media screen and (max-width: 768px) {
+        font-size: 1.25rem;
+      }
+    }
+
+    div {
+      width: 100%;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 10vw;
+        height: 10vw;
+        margin: 1vw 0;
+
+        @media screen and (max-width: 768px) {
+          width: 30vw;
+          height: 30vw;
+        }
+      }
+    }
+  }
+
+  #loginRight {
+    /* >> */
+    margin: auto;
+
+    >div {
+      /* >> */
+
+      font-size: 1.25vw;
+
+      @media screen and (max-width: 768px) {
+        font-size: 1rem !important;
+      }
+
+      h2 {
+        width: 100%;
+        text-align: center;
+        font-size: 2rem;
+      }
+
+      >form {
+        width: 40vw;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        margin: auto;
+
+        @media screen and (max-width: 768px) {
+          width: 90%;
+        }
+
+        >div {
+          padding: 1vw 0;
+          width: 100%;
+
+          label {
+            width: 100%;
+            padding: 0.25vw;
+            font-weight: 500;
+            color: rgba(102, 102, 102, 1);
+            font-size: 1.25vw;
+
+            @media screen and (max-width: 768px) {
+              font-size: 0.875rem !important;
+            }
+          }
+
+          >input {
+            width: 100%;
+            padding: 0.8vw 2vw;
+            border: none;
+            border-radius: 1vw;
+            font-weight: 400;
+            background-color: rgba(176, 186, 195, 0.4);
+            font-size: 1.5vw;
+
+            @media screen and (max-width: 768px) {
+              font-size: 1rem !important;
+            }
+          }
+
+          >input:focus {
+            outline: none;
+          }
+        }
+
+        input[type="submit"] {
+          background-color: rgba(249, 237, 50, 1);
+          color: #000;
+          text-align: center;
+          font-family: "Noto Sans";
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+          border-radius: 1vw;
+          padding: 0.5vw 5vw;
+          border: none;
+
+          font-size: 1.5vw;
+
+          @media screen and (max-width: 768px) {
+            font-size: 1rem !important;
+          }
+        }
+      }
+    }
+  }
+}

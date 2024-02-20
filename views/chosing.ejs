@@ -1,0 +1,162 @@
+<%- include('partial/head.ejs') %>
+<link rel="stylesheet" href="/stylesheets/chosing.css">
+
+<main>
+  <div id="chosingLeft" class="w100">
+    <div class="justify-center align-center position-rel w-100 overflow-visible">
+      <img src="/images/thapSinhThaiDaNang-Logo.png" alt="">
+      <h1>Chọn loại cây bạn muốn canh tác</h1>
+    </div>
+
+
+    <div id="chosingList">
+      <div class="chosing-item" id="chosingItem1">
+        <img src="/images/chose1.jpg" alt="">
+        <p>Loại cây adsfadsf asdfadsf asf adsf as1</p>
+      </div>
+      <div class="chosing-item" id="chosingItem2">
+        <img src="/images/chose1.jpg" alt="">
+        <p>Loại cây 2</p>
+      </div>
+      <div class="chosing-item" id="chosingItem3">
+        <img src="/images/chose1.jpg" alt="">
+        <p>Loại cây 3</p>
+      </div>
+      <div class="chosing-item" id="chosingItem4">
+        <img src="/images/chose1.jpg" alt="">
+        <p>Loại cây 4</p>
+      </div>
+      <div class="chosing-item" id="chosingItem5">
+        <img src="/images/chose1.jpg" alt="">
+        <p>Loại cây 5</p>
+      </div>
+      <div class="chosing-item" id="chosingItem6">
+        <img src="/images/chose1.jpg" alt="">
+        <p>Loại cây 6</p>
+      </div>
+      <div class="chosing-item" id="chosingItem7">
+        <img src="/images/chose1.jpg" alt="">
+        <p>Loại cây 7</p>
+      </div>
+      <div class="chosing-item" id="chosingItem8">
+        <img src="/images/chose1.jpg" alt="">
+        <p>Loại cây 8</p>
+      </div>
+      <div class="chosing-item" id="chosingItem9">
+        <img src="/images/chose1.jpg" alt="">
+        <p>Loại cây 9</p>
+      </div>
+      <div class="chosing-item" id="chosingItem10">
+        <img src="/images/chose1.jpg" alt="">
+        <p>Loại cây 10</p>
+      </div>
+      <div class="chosing-item" id="chosingItem11">
+        <img src="/images/chose1.jpg" alt="">
+        <p>Loại cây 11</p>
+      </div>
+      <div class="chosing-item" id="chosingItem12">
+        <img src="/images/chose1.jpg" alt="">
+        <p>Loại cây 12</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="chosingRight" class="d-none">
+
+    <div id="chosingInfo">
+      <h2 class="font-1-25vw text-center">Thông tin sinh trưởng của cây</h2>
+      <div>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, quidem minus tempore quod
+        natus
+        ipsa dolorem impedit, voluptatem, odio illum minima veritatis et atque laborum quisquam dolore! Ea,
+        aliquam a.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, maiores ducimus similique adipisci
+        fugiat quisquam, temporibus expedita, nisi recusandae deserunt sapiente veritatis amet! Voluptas,
+        vel
+        libero explicabo qui possimus nesciunt.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut sit cumque ipsa sunt corporis quod nisi
+        itaque dolore ducimus tempora, doloremque natus quibusdam, aliquam, veritatis expedita tempore
+        nostrum
+        non soluta.
+      </div>
+    </div>
+
+    <div id="chosingSubmit" class="font-1-25vw">
+      Hoàn tất!
+    </div>
+
+  </div>
+</main>
+<% if (message) { %>
+<div style="display: none;" id="message">
+  <%= message %>
+</div>
+<% } %>
+<script>
+  setTimeout(() => {
+
+    if (document.getElementById("message").textContent.length > 1) {
+      alert(document.getElementById("message").innerText);
+    }
+  }, 400)
+
+  function changeChosingUI(items) {
+    let main = document.querySelector('main');
+    let chosingRight = document.getElementById('chosingRight');
+
+    if (Array.from(items).some(item => item.getAttribute('target') === 'true')) {
+      main.style.display = 'grid';
+      main.style.gridTemplateColumns = '60% 40%';
+      chosingRight.style.display = 'flex';
+    } else {
+      main.style.display = 'block';
+      chosingRight.style.display = 'none';
+    }
+  }
+
+  function chosingItem() {
+    let items = document.querySelectorAll('.chosing-item');
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        items.forEach(item => item.setAttribute('target', 'false'));
+        item.setAttribute('target', 'true');
+        changeChosingUI(items);
+      });
+    });
+  }
+  chosingItem();
+
+  function chosen() {
+    let submit = document.getElementById('chosingSubmit');
+    submit.addEventListener('click', () => {
+        let items = document.querySelectorAll('.chosing-item');
+        let chosen = Array.from(items).find(item => item.getAttribute('target') === 'true');
+        const id = window.location.href.split('=')[1];
+        if (chosen) {
+            alert(`Bạn đã chọn cây ${chosen.querySelector('p').innerText}`);
+            setTimeout(() => {
+                fetch(`/chosing?id=${id}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        treeName: chosen.querySelector('p').textContent
+                    })
+                }).then(res => res.json()).then(data => {
+                    if (data.success) {
+                        window.location.href = `/home?id=${id}`;
+                    } else {
+                        alert(data.message);
+                    }
+                });
+            }, 1000);
+        } else {
+            alert('Bạn chưa chọn cây nào');
+        }
+    });
+  }
+  chosen();
+</script>
+
+<%- include('partial/footer.ejs') %>

@@ -1,0 +1,125 @@
+<%- include('partial/head.ejs') %>
+<link rel="stylesheet" href="/stylesheets/login.css">
+<main>
+  <div id="loginLeft">
+    <div>
+      <img src="/images/thapSinhThaiDaNang-Logo.png" alt="">
+    </div>
+    <h1 style="text-transform: uppercase;">tháp sinh thái xanh đa năng</h1>
+  </div>
+  <div id="loginRight">
+    <div id="loginArea">
+      <h2>Đăng nhập</h2>
+
+      <form id="loginForm" method="post" action="/">
+        <div>
+          <label for="loginUserName">Email: </label>
+          <input type="text" required name="loginUserName" id="loginUserName" placeholder="Nhập email bạn đã đăng ký" autofocus>
+        </div>
+
+        <div>
+          <label for="loginPassword">Mật khẩu: </label>
+          <input type="password" required name="loginPassword" id="loginPassword" placeholder="Nhập mật khẩu">
+          <div class="flex-row-nowrap align-center gap-05vw margin-vertical-1vw">
+            <input type="checkbox" onclick="passwordVisible()">
+            <p>Hiển thị mật khẩu</p>
+          </div>
+        </div>
+
+
+        <input type="submit" value="Đăng nhập">
+
+
+        <p class="margin-vertical-1vw w100 text-center text-nowrap">Chưa có tài khoản? <b onclick="switchLogin()" style="color: rgba(238, 114, 20, 1); cursor: pointer;">Tạo tài
+            khoản</b></p>
+      </form>
+    </div>
+
+    <div id="registerArea" class="d-none">
+      <h2>Đăng ký tài khoản</h2>
+
+      <form id="registerForm" method="post" action="/register">
+        <div>
+          <label for="registerUserName">Email của bạn: </label>
+          <input type="text" required name="registerUserName" id="registerUserName" placeholder="Nhập email của bạn" autofocus>
+        </div>
+
+        <div>
+          <label for="registerProfile">Họ và tên: </label>
+          <input type="text" required name="registerProfile" id="registerProfile" placeholder="Nhập họ và tên của bạn">
+        </div>
+
+        <div>
+          <label for="registerPassword">Mật khẩu: </label>
+          <input type="password" required name="registerPassword" id="registerPassword" placeholder="Nhập mật khẩu">
+        </div>
+
+        <div>
+          <label for="reRegisterPassword">Nhập lại mật khẩu: </label>
+          <input type="password" required name="reRegisterPassword" id="reRegisterPassword" placeholder="Nhập lại mật khẩu">
+          <div class="flex-row-nowrap align-center gap-05vw margin-vertical-1vw">
+            <input type="checkbox" onclick="passwordVisible()">
+            <p>Hiển thị mật khẩu</p>
+          </div>
+        </div>
+
+
+        <input type="submit" value="Đăng ký">
+
+
+        <p class="margin-vertical-1vw w100 text-center text-nowrap">Đã có tài khoản? <b onclick="switchLogin()" style="color: rgba(238, 114, 20, 1); cursor: pointer;">Đăng nhập</b>
+        </p>
+      </form>
+    </div>
+  </div>
+</main>
+<% if (message) { %>
+<div style="display: none;" id="message"><%= message %></div>
+<% } %>
+
+<script>
+  setTimeout(() => {
+
+    if (document.getElementById("message").textContent.length > 1) {
+      alert(document.getElementById("message").innerText);
+    }
+  }, 400)
+  let checkbox = false;
+
+  function passwordVisible() {
+    checkbox = !checkbox;
+
+    let check = document.querySelectorAll("input[type='checkbox']");
+    if (checkbox) {
+      check[0].checked = true;
+      check[1].checked = true;
+    } else {
+      check[0].checked = false;
+      check[1].checked = false;
+    }
+
+    var x = document.querySelectorAll("[id*='Password']");
+
+    for (var i = 0; i < x.length; i++) {
+      if (x[i].type === "password") {
+        x[i].type = "text";
+      } else {
+        x[i].type = "password";
+      }
+    }
+  }
+
+  function switchLogin() {
+    var loginArea = document.getElementById("loginArea");
+    var registerArea = document.getElementById("registerArea");
+
+    if (loginArea.classList.contains("d-none")) {
+      loginArea.classList.remove("d-none");
+      registerArea.classList.add("d-none");
+    } else {
+      loginArea.classList.add("d-none");
+      registerArea.classList.remove("d-none");
+    }
+  }
+</script>
+<%- include('partial/footer.ejs') %>

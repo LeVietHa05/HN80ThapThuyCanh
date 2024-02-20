@@ -1,0 +1,563 @@
+<%- include('partial/head.ejs') %>
+    <link rel="stylesheet" href="/stylesheets/index.css">
+
+    <nav>
+        <div>
+            <div class="" id="logoNav">
+                <img src="/images/thapSinhThaiDaNang-Logo.png" onclick="window.location.href='/'" alt="">
+                <p class="uppercase font-bold font-1-25vw">Tháp sinh thái xanh<br>đa năng</p>
+            </div>
+
+            <div class="nav-item">
+                <img src="/images/tree-info.png" alt="">
+                <dialog id="treeInfo">
+                    <div class="position-rel">
+                        <span style="font-weight: 900;" class="material-symbols-outlined dialog-close">close</span>
+                        <h2 class="text-center">Thông tin sinh trưởng của cây</h2>
+                        <div id="treeInfoContent">
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit totam qui tempore in
+                            adipisci, aperiam hic
+                            delectus pariatur temporibus quaerat voluptates, neque assumenda veniam doloribus nisi
+                            repellat officia
+                            repudiandae veritatis? <br>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto corporis dignissimos hic ut
+                            atque nam ipsa
+                            officiis consectetur laudantium, ex eos? Alias temporibus ab, ullam nesciunt vel voluptate
+                            itaque
+                            repudiandae. <br>
+                        </div>
+                    </div>
+                </dialog>
+            </div>
+        </div>
+
+        <div>
+            <div class="nav-item">
+                <img src="/images/project-info.png" alt="">
+                <dialog id="projectInfo">
+                    <div class="position-rel">
+                        <span style="font-weight: 900;" class="material-symbols-outlined dialog-close">close</span>
+                        <h2 class="text-center">Thông tin về Tháp Sinh Thái Xanh đa năng</h2>
+                        <div id="projectInfoContent">
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit totam qui tempore in
+                            adipisci, aperiam hic
+                            delectus pariatur temporibus quaerat voluptates, neque assumenda veniam doloribus nisi
+                            repellat officia
+                            repudiandae veritatis? <br>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto corporis dignissimos hic ut
+                            atque nam ipsa
+                            officiis consectetur laudantium, ex eos? Alias temporibus ab, ullam nesciunt vel voluptate
+                            itaque
+                            repudiandae. <br>
+                        </div>
+                    </div>
+                </dialog>
+            </div>
+
+            <div class="nav-item">
+                <img src="/images/setting.png" alt="">
+                <dialog id="setting" class="dialog-close">
+                    <div id="settingDialog">
+                        <div>
+                            <!-- TODO: end section -->
+                            <span style="font-weight: 900;" class="material-symbols-outlined"
+                                onclick="window.location.href='/'">logout</span>
+                            <span style="font-weight: 900;" class="material-symbols-outlined"
+                                onclick="gotoChosing()">call_quality</span>
+                        </div>
+                        <img src="/images/setting.png" alt="" active>
+                    </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-row-nowrap">
+        <div id="indexLeft">
+            <img src="/images/thap.png" alt="">
+            <div class="font-1-5vw">Chế độ: Tự động</div>
+        </div>
+
+        <div id="indexRight">
+            <div class="font-1-5vw font-bold">
+                Thời tiết hiện tại:
+                <span style="font-weight: 900; color: rgba(216, 0, 50, 1);"
+                    class="material-symbols-outlined">device_thermostat</span>
+                <span id="temp"> </span>
+                <span style="font-weight: 900; color: rgba(0, 172, 172, 1);"
+                    class="material-symbols-outlined">humidity_high</span>
+                <span id="humi"> </span> 
+                <span id="currentConditions">
+                    <!-- js change the conditions inside -->
+                </span>
+            </div>
+
+            <div id="indexContent">
+                <div id="chartTab">
+                    <div>
+                        <div class="chartItem"> <canvas class=" " id="tempChart"> </canvas> </div>
+                        <div class="chartItem"><canvas class=" " id="humiChart"> </canvas></div>
+                        <div class="chartItem"><canvas class=" " id="waterTempChart"> </canvas></div>
+                        <div class="chartItem"><canvas class=" " id="phValChart"> </canvas></div>
+                        <div class="chartItem"><canvas class=" " id="tdsValChart"> </canvas></div>
+                        <div class="chartItem"><canvas class=" " id="luxChart"> </canvas></div>
+                    </div>
+                </div>
+
+                <div id="controlTab">
+                    <div>
+                        <div class="control-item" id="controlItem1">
+                            Manual Mode:<span id="manual" js-btn="1">OFF</span>
+                        </div>
+                        <div class="control-item" id="controlItem2">
+                            Light Control: <span id="isLightControl" js-btn="1">OFF</span>
+                        </div>
+                        <div class="control-item" id="controlItem3">Insect Light Control: <span
+                                id="isInsectLightControl" js-btn="1">OFF</span></div>
+                        <div class="control-item" id="controlItem4">Pump 1 Control: <span id="isPump1Control"
+                                js-btn="1">OFF</span></div>
+                        <div class="control-item" id="controlItem5">Pump 2 Control: <span id="isPump2Control"
+                                js-btn="1">OFF</span></div>
+                        <div class="control-item" id="controlItem6">Pump 3 Control: <span id="isPump3Control"
+                                js-btn="1">OFF</span></div>
+                        <div class="control-item" id="controlItem7">Time Range Bts Heater <br> ON:
+                            <input type="time" id="timeRangeBtsHeaterStart"><br>
+                            OFF: <input type="time" id="timeRangeBtsHeaterStop"> <br>
+                            <span id="timeRangeBtsHeater" js-btn="1">set</span>
+                        </div>
+                        <div class="control-item" id="controlItem8">Time Range Pump Tower <br> ON:
+                            <input type="time" id="timeRangePumpTowerStart"><br>
+                            OFF: <input type="time" id="timeRangePumpTowerStop"> <br>
+                            <span id="timeRangePumpTower" js-btn="1">set</span>
+                        </div>
+                        <div class="control-item" id="controlItem9">Time Range Bts Tower <br> ON:
+                            <input type="time" id="timeRangeBtsTowerStart"><br>
+                            OFF: <input type="time" id="timeRangeBtsTowerStop"> <br>
+                            <span id="timeRangeBtsTower" js-btn="1">set</span>
+                        </div>
+                        <div class="control-item" id="controlItem10">
+                            <div>time On Pump Tower: <input type="number" id="timeOnPumpTowerOn" min="1"> (second)</div>
+                            <div>time Off Pump Tower: <input type="number" id="timeOnPumpTowerOff" min="1"> (second)
+                            </div>
+                            <div id="timeOnPumpTower" js-btn="1">set</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <img id="scrollDownBtn" src="/images/scrollDown.png" alt="">
+        <img id="scrollUpBtn" class="d-none" src="/images/scrollUp.png" alt="">
+    </main>
+
+    <script>
+        function scroll() {
+            let scrollDownBtn = document.getElementById('scrollDownBtn');
+            let scrollUpBtn = document.getElementById('scrollUpBtn');
+            let chartTab = document.getElementById('chartTab');
+            let controlTab = document.getElementById('controlTab');
+
+            function scrollDown() {
+                scrollUpBtn.classList.remove('d-none');
+                scrollDownBtn.classList.add('d-none');
+                chartTab.style.transform = 'translateY(calc(-100% - 2vw)';
+                controlTab.style.transform = 'translateY(-100%)';
+                chartTab.style.opacity = '0';
+                controlTab.style.opacity = '1';
+            }
+
+            function scrollUp() {
+                scrollUpBtn.classList.add('d-none');
+                scrollDownBtn.classList.remove('d-none');
+                chartTab.style.transform = 'translateY(0)';
+                controlTab.style.transform = 'translateY(100%)';
+                chartTab.style.opacity = '1';
+                controlTab.style.opacity = '0';
+            }
+
+            scrollDownBtn.addEventListener('click', () => {
+                scrollDown();
+            });
+
+            scrollUpBtn.addEventListener('click', () => {
+                scrollUp();
+            });
+
+            let isScrolling = false;
+            window.addEventListener('scroll', handleScroll);
+
+            function handleScroll() {
+                if (!isScrolling) {
+                    isScrolling = true;
+                    // Check the scroll direction
+                    const scrollDirection = window.scrollY > prevScrollY ? 'down' : 'up';
+
+                    // Log based on scroll direction
+                    if (scrollDirection === 'down') {
+                        scrollDown();
+                    } else if (scrollDirection === 'up') {
+                        scrollUp();
+                    }
+
+                    // Store previous scroll position for comparison
+                    prevScrollY = window.scrollY;
+
+                    // Debounce the scroll event listener
+                    setTimeout(() => {
+                        isScrolling = false;
+                    }, 500);
+                }
+            }
+
+            // Initialize prevScrollY variable
+            let prevScrollY = window.scrollY;
+
+
+        }
+        scroll();
+
+        function openNav() {
+            let navImg = document.querySelectorAll('.nav-item>img');
+            navImg.forEach(img => {
+                img.addEventListener('click', () => {
+                    let dialog = img.nextElementSibling;
+                    if (dialog) {
+                        dialog.setAttribute('open', 'true');
+                        navImg.forEach(img => {
+                            img.style.pointerEvents = 'none';
+                        });
+                        document.querySelector('main').classList.add('d-none-force')
+                        // document.querySelector('#scrollUpBtn').classList.add('d-none-force')
+                    }
+
+                });
+            });
+        }
+        openNav();
+
+        function dialogClose() {
+            let closeBtn = document.querySelectorAll('.dialog-close');
+            // find the nearest dialog
+            closeBtn.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    let dialog = btn.closest('dialog');
+                    if (dialog) {
+                        dialog.removeAttribute('open');
+                        let navImg = document.querySelectorAll('.nav-item>img');
+                        navImg.forEach(img => {
+                            img.style.pointerEvents = 'auto';
+                        });
+                        document.querySelector('main').classList.remove('d-none-force')
+                        // document.querySelector('#scrollUpBtn').classList.remove('d-none-force')
+                    }
+                });
+            });
+        }
+        dialogClose();
+
+        function gotoChosing() {
+
+            let id = window.location.search.split('=')[1];
+            if (!id) {
+                //chua dang nhap
+                window.location.href = '/';
+                return;
+            }
+            window.location.href = `/chosing?id=${id}`;
+            return
+        }
+    </script>
+    <script>
+        function getChartData(field, sort, limit) {
+            console.log(`getting chart data for ${field} with sort ${sort} and limit ${limit}`);
+            return fetch(`/api/v1/measure?field=${field}&sort=${sort}&limit=${limit}`)
+                .then(res => res.json())
+                .then(data => {
+                    // console.table(data);
+                    return data;
+                })
+        }
+
+        function getControlData() {
+            console.log('getting control data');
+            return fetch(`/api/v1/control`)
+                .then(res => res.json())
+                .then(data => {
+                    console.table(data);
+                    return data;
+                })
+        }
+
+        async function updateControlData() {
+            console.log('updating control data');
+            let controlData = await getControlData();
+            for (let key in controlData) {
+                if (key == "manualMode" || key == 'timeRangeBtsHeater' || key == 'timeRangePumpTower' || key == 'timeRangeBtsTower') {
+                    continue;
+                }
+                control[key] = controlData[key];
+
+            }
+            control.manual = controlData.manualMode;
+            [control.timeRangeBtsHeater.start, control.timeRangeBtsHeater.end] = [controlData.timeRangeBtsHeater.split('-')[0], controlData.timeRangeBtsHeater.split('-')[1]];
+            [control.timeRangePumpTower.start, control.timeRangePumpTower.end] = [controlData.timeRangePumpTower.split('-')[0], controlData.timeRangePumpTower.split('-')[1]];
+            [control.timeRangeBtsTower.start, control.timeRangeBtsTower.end] = [controlData.timeRangeBtsTower.split('-')[0], controlData.timeRangeBtsTower.split('-')[1]];
+            // console.log(control);
+            manual.innerHTML = control.manual ? "ON" : "OFF";
+            isLightControl.innerHTML = control.isLightControl ? "ON" : "OFF";
+            isInsectLightControl.innerHTML = control.isInsectLightControl ? "ON" : "OFF";
+            isPump1Control.innerHTML = control.isPump1Control ? "ON" : "OFF";
+            isPump2Control.innerHTML = control.isPump2Control ? "ON" : "OFF";
+            isPump3Control.innerHTML = control.isPump3Control ? "ON" : "OFF";
+            timeRangeBtsHeater.innerHTML = `set: ${control.timeRangeBtsHeater.start} - ${control.timeRangeBtsHeater.end}`;
+            timeRangePumpTower.innerHTML = `set: ${control.timeRangePumpTower.start} - ${control.timeRangePumpTower.end}`;
+            timeRangeBtsTower.innerHTML = `set: ${control.timeRangeBtsTower.start} - ${control.timeRangeBtsTower.end}`;
+            timeOnPumpTower.innerHTML = `set: ON: ${control.timeOnPumpTower} - OFF: ${control.timeOffPumpTower}`;
+
+        }
+
+        updateControlData();
+
+        manual.addEventListener('click', () => {
+            control.manual = !control.manual;
+            manual.innerHTML = control.manual ? "ON" : "OFF";
+            //TODO: if (manual) then disable all the control
+            // here
+
+            socket.emit('/web/control', { manualMode: control.manual })
+        })
+
+        isLightControl.addEventListener('click', () => {
+            if (!control.manual) return alert('please turn on manual mode');
+            control.isLightControl = !control.isLightControl;
+            isLightControl.innerHTML = control.isLightControl ? "ON" : "OFF";
+            socket.emit('/web/control', { isLightControl: control.isLightControl })
+        })
+
+        isInsectLightControl.addEventListener('click', () => {
+            if (!control.manual) return alert('please turn on manual mode');
+            control.isInsectLightControl = !control.isInsectLightControl;
+            isInsectLightControl.innerHTML = control.isInsectLightControl ? "ON" : "OFF";
+            socket.emit('/web/control', { isInsectLightControl: control.isInsectLightControl })
+        })
+
+        isPump1Control.addEventListener('click', () => {
+            if (!control.manual) return alert('please turn on manual mode');
+            control.isPump1Control = !control.isPump1Control;
+            isPump1Control.innerHTML = control.isPump1Control ? "ON" : "OFF";
+            socket.emit('/web/control', { isPump1Control: control.isPump1Control })
+        })
+
+        isPump2Control.addEventListener('click', () => {
+            if (!control.manual) return alert('please turn on manual mode');
+            control.isPump2Control = !control.isPump2Control;
+            isPump2Control.innerHTML = control.isPump2Control ? "ON" : "OFF";
+            socket.emit('/web/control', { isPump2Control: control.isPump2Control })
+        })
+
+        isPump3Control.addEventListener('click', () => {
+            if (!control.manual) return alert('please turn on manual mode');
+            control.isPump3Control = !control.isPump3Control;
+            isPump3Control.innerHTML = control.isPump3Control ? "ON" : "OFF";
+            socket.emit('/web/control', { isPump3Control: control.isPump3Control })
+        })
+
+        timeRangeBtsHeater.addEventListener('click', () => {
+            if (!control.manual) return alert('please turn on manual mode');
+            if (!timeRangeBtsHeaterStart.value || !timeRangeBtsHeaterStop.value) {
+                alert('please fill in the time');
+                return;
+            }
+            control.timeRangeBtsHeater.start = timeRangeBtsHeaterStart.value;
+            control.timeRangeBtsHeater.end = timeRangeBtsHeaterStop.value;
+            timeRangeBtsHeater.innerHTML = `set: ${control.timeRangeBtsHeater.start} - ${control.timeRangeBtsHeater.end}`;
+            socket.emit('/web/control', { timeRangeBtsHeater: `${control.timeRangeBtsHeater.start}-${control.timeRangeBtsHeater.end}` })
+        })
+
+        timeRangePumpTower.addEventListener('click', () => {
+            if (!control.manual) return alert('please turn on manual mode');
+            if (!timeRangePumpTowerStart.value || !timeRangePumpTowerStop.value) {
+                alert('please fill in the time');
+                return;
+            }
+            control.timeRangePumpTower.start = timeRangePumpTowerStart.value;
+            control.timeRangePumpTower.end = timeRangePumpTowerStop.value;
+            timeRangePumpTower.innerHTML = `set: ${control.timeRangePumpTower.start} - ${control.timeRangePumpTower.end}`;
+            socket.emit('/web/control', { timeRangePumpTower: `${control.timeRangePumpTower.start}-${control.timeRangePumpTower.end}` })
+        })
+
+        timeRangeBtsTower.addEventListener('click', () => {
+            if (!control.manual) return alert('please turn on manual mode');
+            if (!timeRangeBtsTowerStart.value || !timeRangeBtsTowerStop.value) {
+                alert('please fill in the time');
+                return;
+            }
+            control.timeRangeBtsTower.start = timeRangeBtsTowerStart.value;
+            control.timeRangeBtsTower.end = timeRangeBtsTowerStop.value;
+            timeRangeBtsTower.innerHTML = `set: ${control.timeRangeBtsTower.start} - ${control.timeRangeBtsTower.end}`;
+            socket.emit('/web/control', { timeRangeBtsTower: `${control.timeRangeBtsTower.start}-${control.timeRangeBtsTower.end}` })
+        })
+
+        timeOnPumpTower.addEventListener('click', () => {
+            if (!control.manual) return alert('please turn on manual mode');
+            if (!timeOnPumpTowerOn.value || !timeOnPumpTowerOff.value) {
+                alert('please fill in the time');
+                return;
+            }
+            control.timeOnPumpTower = timeOnPumpTowerOn.value;
+            control.timeOffPumpTower = timeOnPumpTowerOff.value;
+            timeOnPumpTower.innerHTML = `set: ON: ${control.timeOnPumpTower} - OFF: ${control.timeOffPumpTower}`;
+            socket.emit('/web/control', { timeOnPumpTower: control.timeOnPumpTower, timeOffPumpTower: control.timeOffPumpTower })
+        })
+
+
+    </script>
+    <script src="../socket.io/socket.io.js"></script>
+    <script>
+        //a envir class to save the data
+        class Envir {
+            constructor(number, unit, name, el = null) {
+                this.number = number;
+                this.unit = unit;
+                this.name = name;
+                this.el = el;
+                this.update();
+            }
+            get getValue() {
+                return `${this.number} ${this.unit}`;
+            }
+            set setValue(val) {
+                this.number = val;
+                if (this.el) {
+                    this.el.innerHTML = `${this.number} ${this.unit}`;
+                }
+            }
+            update() {
+                if (this.el) {
+                    this.el.innerHTML = `${this.number} ${this.unit}`;
+                }
+            }
+
+        }
+
+        //save the lastest data
+        let temp = new Envir(25, "°C", "nhiệt độ", document.getElementById('temp'));
+        let humi = new Envir(50, "%", "độ ẩm", document.getElementById('humi'));
+        let phVal = new Envir(7, "", "độ pH");
+        let tdsVal = new Envir(500, "ppm", "TDS");
+        let waterTemp = new Envir(25, "°C", "nhiệt độ nước");
+        let lux = new Envir(1000, "lux", "ánh sáng");
+        let isRain = new Envir(0, "", "mưa");
+        let isWater1LevelLow = new Envir(0, "", "mực nước 1");
+        let isWater2LevelLow = new Envir(0, "", "mực nước 2");
+        let isWater3LevelLow = new Envir(0, "", "mực nước 3");
+        let isBtsHeaterOn = new Envir(0, "", "sò nhiệt");
+
+        let envirs = { temp: temp, humi: humi, phVal: phVal, tdsVal: tdsVal, waterTemp: waterTemp, lux: lux, isRain: isRain, isWater1LevelLow: isWater1LevelLow, isWater2LevelLow: isWater2LevelLow, isWater3LevelLow: isWater3LevelLow, isBtsHeaterOn: isBtsHeaterOn };
+        //save the control data 
+        let control = {
+            //TODO: this is input type button
+            manual: 0, //true or false
+            isLightControl: 0, //true or false
+            isInsectLightControl: 0, //true or false
+            isPump1Control: 0, //true or false
+            isPump2Control: 0, //true or false
+            isPump3Control: 0, //true or false
+            //TODO: this is input type time
+            timeRangeBtsHeater: { //trong thời điểm nào thì sò nhiệt hoạt động
+                start: "00:00",
+                end: "00:00",
+            },
+            //TODO: this is input type time
+            timeRangePumpTower: { //trong thời điểm nào thì bơm (của tháp chính) hoạt động
+                start: "00:00",
+                end: "00:00",
+            },
+            //TODO: this is input type time
+            timeRangeBtsTower: { //trong thời điểm nào thì tháp xoay hoạt động
+                start: "00:00",
+                end: "00:00",
+            },
+            //TODO: this is input type number
+            timeOnPumpTower: 0, //thời gian bơm hoạt động liên tục (giây)
+            timeOffPumpTower: 0, //thời gian bơm nghỉ sau khi hoạt động (giây)
+        }
+
+
+        var socket = io();
+        socket.on('connect', function () {
+            console.log('connected');
+        });
+        socket.on('disconnect', function () {
+            console.log('disconnected');
+        });
+
+        socket.on("/web/measure", (data) => {
+            console.log(data);
+            for (let key in data) {
+                if (envirs[key]) {
+                    envirs[key].setValue = data[key];
+                }
+            }
+        })
+
+
+
+    </script>
+    <!-- chart script -->
+    <script>
+        function chartConfigGen(label, data, color) {
+            return {
+                type: 'line',
+                data: {
+                    labels: data.map(d => {
+                        let date = new Date(d.time);
+                        return `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+                    }),
+                    datasets: [{
+                        label: label.name,
+                        data: data.map(d => d[label.id]),
+                        borderColor: color,
+                        tension: 0.1,
+                    }],
+                    options: {
+                        responsive: true,
+                    }
+                },
+                options: {
+                    responsive: true,
+                },
+            }
+        }
+
+        let labels = [{ name: "Nhiệt độ", id: "temp" }, { name: "Độ ẩm", id: "humi" }, { id: "waterTemp", name: "Nhiệt độ nước" }, { id: "phVal", name: "pH" }, { id: "tdsVal", name: "TDS" }, { id: "lux", name: "Lux" }]
+        let chartIDs = ["tempChart", "humiChart", "waterTempChart", "phValChart", "tdsValChart", "luxChart"]
+        let colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange']
+
+        let charts = [];
+        let chartConfigs = [];
+        for (let i = 0; i < labels.length; i++) {
+            getChartData(labels[i].id, '-1', 10)
+                .then(a => {
+                    // console.log(a);
+                    chartConfigs[i] = chartConfigGen(labels[i], a, colors[i]);
+                    charts[i] = new Chart(document.getElementById(chartIDs[i]), chartConfigs[i]);
+                })
+        }
+
+
+        function addNewData(chart, label, data) {
+            chart.data.labels.push(label);
+            chart.data.datasets.forEach((dataset) => {
+                dataset.data.push(data);
+            });
+            chart.update();
+        }
+        function removeChartData(chart) {
+            chart.data.labels.shift();
+            chart.data.datasets.forEach((dataset) => {
+                dataset.data.shift();
+            });
+            chart.update();
+        }
+    </script>
+    <%- include('partial/footer.ejs') %>
