@@ -9,6 +9,17 @@ nav {
     position: fixed;
     /* z-index: 1; */
 
+    @media screen and (max-width: 768px) {
+        padding: 1vw;
+        height: fit-content;
+        gap: 1vw;
+
+        &:hover .nav-item {
+            display: block !important;
+        }
+
+    }
+
     img {
         width: 4vw;
         height: 4vw;
@@ -21,22 +32,30 @@ nav {
         &:hover {
             box-shadow: 0 0.3vw 0.5vw 0.1vw rgba(0, 0, 0, 0.4);
         }
+
+        @media screen and (max-width: 768px) {
+            width: 3rem;
+            height: 3rem;
+        }
     }
 
     >div {
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
-        align-items: ce;
 
-        #logoNav {
-            display: flex;
-            flex-flow: row nowrap;
-            align-items: center;
+        @media screen and (max-width: 768px) {
+            flex-flow: column nowrap;
             gap: 1vw;
         }
 
         >div {
+            @media screen and (max-width: 768px) {
+                /* visibility: hidden; */
+                display: none;
+                margin-bottom: 1rem;
+            }
+
             >dialog {
                 height: 100vh;
                 width: 100vw;
@@ -95,12 +114,22 @@ nav {
 
                     box-shadow: 0 0.3vw 0.5vw 0.1vw rgba(0, 0, 0, 0.2);
 
+                    @media screen and (max-width: 768px) {
+                        width: 3rem;
+                        border-radius: 1.5rem;
+                    }
+
                     >div {
                         padding: 1vw 0.5vw;
                         display: flex;
                         flex-direction: column;
                         align-items: center;
                         gap: 1vw;
+
+                        @media screen and (max-width: 768px) {
+                            padding: 0.5rem 0.25rem;
+
+                        }
 
                         >span {
                             font-size: 1.5vw !important;
@@ -110,10 +139,23 @@ nav {
                             &:hover {
                                 color: #FF0000;
                             }
+
+                            @media screen and (max-width: 768px) {
+                                font-size: 2rem !important;
+                            }
                         }
                     }
                 }
             }
+        }
+
+        #logoNav {
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            gap: 1vw;
+            visibility: visible;
+
         }
     }
 }
@@ -121,22 +163,36 @@ nav {
 main {
     width: 100vw;
     height: 100vh;
-    justify-content: space-evenly;
-    align-items: center;
     padding: 6vw;
     z-index: 2;
-    gap: 4vw;
+    gap: 2vw;
     transition: all 0.5s;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: 768px) {
+        grid-template-columns: 100%;
+        padding: 2vw;
+
+    }
 
     #indexLeft {
         display: flex;
         flex-flow: column;
         justify-content: center;
         align-items: center;
+        width: 100%;
 
         img {
             height: 60vh;
-            object-fit: cover;
+            width: 100%;
+            object-fit: contain;
+
+            @media screen and (max-width: 768px) {
+                height: 15vh;
+            }
         }
 
         >div {
@@ -156,7 +212,7 @@ main {
         justify-content: space-between;
         gap: 2vw;
         width: 100%;
-        
+
         #indexContent {
             height: 60vh;
 
@@ -170,7 +226,7 @@ main {
 
                 >div {
                     display: grid;
-                    grid-template-columns: auto auto auto;
+                    grid-template-columns: 33% 33% 33%;
                     gap: 1px;
                     border-radius: 2vw;
                     overflow: hidden;
@@ -180,7 +236,7 @@ main {
                         flex-flow: row nowrap;
                         align-items: center;
                         gap: 1vw;
-                        background-color: gray;
+                        background-color: white;
                         height: 30vh;
                     }
                 }
@@ -193,23 +249,31 @@ main {
                 flex-flow: column;
                 justify-content: center;
                 opacity: 0;
+                height: 60vh;
+                overflow: hidden;
 
                 >div {
                     display: grid;
-                    grid-template-columns: auto auto;
-
-                    gap: 2vw;
+                    grid-template-columns: 45% 45%;
+                    height: inherit;
+                    gap: 1vw;
 
                     >div {
                         display: flex;
                         flex-flow: column;
-                        gap: 1vw;
+                        /* gap: 1vw; */
                         align-items: center;
                         justify-content: center;
-                        padding: 1vw;
+                        /* padding: 1vw; */
                         border-radius: 2vw;
                         background-color: rgba(82, 160, 83, 1);
                         cursor: pointer;
+                        line-height: 1.75;
+
+                        &:hover {
+                            background-color: rgba(82, 160, 83, 0.8);
+                        }
+
                     }
                 }
             }
@@ -235,4 +299,8 @@ main {
     right: 50vw;
     transform: translateX(50%);
     cursor: pointer;
+
+    @media screen and (max-width: 768px) {
+        top: 30vh;
+    }
 }

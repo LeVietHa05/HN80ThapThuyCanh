@@ -1,7 +1,7 @@
 <%- include('partial/head.ejs') %>
     <link rel="stylesheet" href="/stylesheets/index.css">
 
-    <nav>
+    <nav id="navcc">
         <div>
             <div class="" id="logoNav">
                 <img src="/images/thapSinhThaiDaNang-Logo.png" onclick="window.location.href='/'" alt="">
@@ -71,7 +71,7 @@
         </div>
     </nav>
 
-    <main class="flex-row-nowrap">
+    <main>
         <div id="indexLeft">
             <img src="/images/thap.png" alt="">
             <div class="font-1-5vw">Chế độ: Tự động</div>
@@ -85,7 +85,7 @@
                 <span id="temp"> </span>
                 <span style="font-weight: 900; color: rgba(0, 172, 172, 1);"
                     class="material-symbols-outlined">humidity_high</span>
-                <span id="humi"> </span> 
+                <span id="humi"> </span>
                 <span id="currentConditions">
                     <!-- js change the conditions inside -->
                 </span>
@@ -119,24 +119,36 @@
                                 js-btn="1">OFF</span></div>
                         <div class="control-item" id="controlItem6">Pump 3 Control: <span id="isPump3Control"
                                 js-btn="1">OFF</span></div>
-                        <div class="control-item" id="controlItem7">Time Range Bts Heater <br> ON:
-                            <input type="time" id="timeRangeBtsHeaterStart"><br>
-                            OFF: <input type="time" id="timeRangeBtsHeaterStop"> <br>
+                        <div class="control-item" id="controlItem7">Time Range Bts Heater
+                            <div class="flex-row gap-2vw">
+                                ON:
+                                <input type="time" id="timeRangeBtsHeaterStart">
+                                - OFF: <input type="time" id="timeRangeBtsHeaterStop"> 
+                            </div>
+
                             <span id="timeRangeBtsHeater" js-btn="1">set</span>
                         </div>
-                        <div class="control-item" id="controlItem8">Time Range Pump Tower <br> ON:
-                            <input type="time" id="timeRangePumpTowerStart"><br>
-                            OFF: <input type="time" id="timeRangePumpTowerStop"> <br>
+                        <div class="control-item" id="controlItem8">Time Range Pump Tower
+                            <div class="flex-row gap-2vw">
+                                ON:
+                                <input type="time" id="timeRangePumpTowerStart">
+                                - OFF: <input type="time" id="timeRangePumpTowerStop"> 
+                            </div>
+
                             <span id="timeRangePumpTower" js-btn="1">set</span>
                         </div>
-                        <div class="control-item" id="controlItem9">Time Range Bts Tower <br> ON:
-                            <input type="time" id="timeRangeBtsTowerStart"><br>
-                            OFF: <input type="time" id="timeRangeBtsTowerStop"> <br>
+                        <div class="control-item" id="controlItem9">Time Range Bts Tower
+                            <div class="flex-row gap-2vw">
+                                ON:
+                                <input type="time" id="timeRangeBtsTowerStart">
+                                - OFF: <input type="time" id="timeRangeBtsTowerStop"> 
+                            </div>
+
                             <span id="timeRangeBtsTower" js-btn="1">set</span>
                         </div>
                         <div class="control-item" id="controlItem10">
-                            <div>time On Pump Tower: <input type="number" id="timeOnPumpTowerOn" min="1"> (second)</div>
-                            <div>time Off Pump Tower: <input type="number" id="timeOnPumpTowerOff" min="1"> (second)
+                            <div>Time On Pump Tower: <input type="number" id="timeOnPumpTowerOn" min="1"> (second)</div>
+                            <div>Time Off Pump Tower: <input type="number" id="timeOnPumpTowerOff" min="1"> (second)
                             </div>
                             <div id="timeOnPumpTower" js-btn="1">set</div>
                         </div>
@@ -176,10 +188,12 @@
 
             scrollDownBtn.addEventListener('click', () => {
                 scrollDown();
+                console.log('scroll down');
             });
 
             scrollUpBtn.addEventListener('click', () => {
                 scrollUp();
+                console.log('scroll up');
             });
 
             let isScrolling = false;
@@ -189,13 +203,16 @@
                 if (!isScrolling) {
                     isScrolling = true;
                     // Check the scroll direction
-                    const scrollDirection = window.scrollY > prevScrollY ? 'down' : 'up';
+                    // make sure it 
+                    const scrollDirection = window.scrollY > prevScrollY + 10 ? 'down' : 'up';
 
                     // Log based on scroll direction
                     if (scrollDirection === 'down') {
                         scrollDown();
+                        console.log('111');
                     } else if (scrollDirection === 'up') {
                         scrollUp();
+                        console.log('222');
                     }
 
                     // Store previous scroll position for comparison
@@ -525,13 +542,14 @@
                 },
                 options: {
                     responsive: true,
+                    maintainAspectRatio: false,
                 },
             }
         }
 
         let labels = [{ name: "Nhiệt độ", id: "temp" }, { name: "Độ ẩm", id: "humi" }, { id: "waterTemp", name: "Nhiệt độ nước" }, { id: "phVal", name: "pH" }, { id: "tdsVal", name: "TDS" }, { id: "lux", name: "Lux" }]
         let chartIDs = ["tempChart", "humiChart", "waterTempChart", "phValChart", "tdsValChart", "luxChart"]
-        let colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange']
+        let colors = ['red', 'blue', 'green', 'purple', 'brown', 'orange']
 
         let charts = [];
         let chartConfigs = [];

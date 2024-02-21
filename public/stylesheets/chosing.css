@@ -120,3 +120,32 @@ body {
         }
     }
 }
+
+.main-chosing {
+    display: grid;
+    grid-template-columns: 60% 40%;
+
+    @media screen and (max-width: 768px) {
+        grid-template-columns: 100%;
+        grid-template-areas:
+            "chosingLeft"
+            "chosingRight";
+        gap: 2vh;
+
+        #chosingLeft {
+            grid-area: chosingLeft;
+            height: 100% !important;
+        }
+
+        #chosingRight {
+            grid-area: chosingRight;
+            padding: 2vh !important;
+
+            #chosingInfo {
+                >div {
+                    padding: 1vh !important;
+                }
+            }
+        }
+    }
+}
