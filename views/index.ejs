@@ -88,7 +88,10 @@
                 <span id="humi"> </span>
                 <span id="currentConditions">
                     <!-- js change the conditions inside -->
-                </span>
+                    <span class="d-none" id="currentConditionsRain"> <span class="material-symbols-outlined" style="font-weight: 900; color: blue;">rainy</span> Đang mưa</span>
+                    <span class="d-none" id=" currentConditionsNotRain"> <span class="material-symbols-outlined" style="font-weight: 900; color: rgb(0, 149, 255);">filter_drama</span> Không mưa</span>
+                    <span class="d-none" id="currentConditionsSunny"> <span class="material-symbols-outlined" style="font-weight: 900; color: orangered;">sunny</span> Trời nắng</span>
+                    </span>
             </div>
 
             <div id="indexContent">
@@ -123,7 +126,7 @@
                             <div class="flex-row gap-2vw">
                                 ON:
                                 <input type="time" id="timeRangeBtsHeaterStart">
-                                - OFF: <input type="time" id="timeRangeBtsHeaterStop"> 
+                                - OFF: <input type="time" id="timeRangeBtsHeaterStop">
                             </div>
 
                             <span id="timeRangeBtsHeater" js-btn="1">set</span>
@@ -132,7 +135,7 @@
                             <div class="flex-row gap-2vw">
                                 ON:
                                 <input type="time" id="timeRangePumpTowerStart">
-                                - OFF: <input type="time" id="timeRangePumpTowerStop"> 
+                                - OFF: <input type="time" id="timeRangePumpTowerStop">
                             </div>
 
                             <span id="timeRangePumpTower" js-btn="1">set</span>
@@ -141,7 +144,7 @@
                             <div class="flex-row gap-2vw">
                                 ON:
                                 <input type="time" id="timeRangeBtsTowerStart">
-                                - OFF: <input type="time" id="timeRangeBtsTowerStop"> 
+                                - OFF: <input type="time" id="timeRangeBtsTowerStop">
                             </div>
 
                             <span id="timeRangeBtsTower" js-btn="1">set</span>
