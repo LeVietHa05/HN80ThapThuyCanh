@@ -171,6 +171,7 @@ main {
     grid-template-columns: 30% 70%;
     align-items: center;
     justify-content: center;
+    position: fixed;
 
     @media screen and (max-width: 768px) {
         grid-template-columns: 100%;
@@ -261,10 +262,17 @@ main {
                 overflow: hidden;
 
                 >div {
+                    width: 100%;
                     display: grid;
                     grid-template-columns: 45% 45%;
                     height: inherit;
                     gap: 1vw;
+
+                    @media screen and (max-width: 768px) {
+                        grid-template-columns: 100%;
+                        overflow: scroll;
+                        gap: 2vw;
+                    }
 
                     >div {
                         display: flex;
@@ -272,14 +280,19 @@ main {
                         /* gap: 1vw; */
                         align-items: center;
                         justify-content: center;
-                        /* padding: 1vw; */
                         border-radius: 2vw;
                         background-color: rgba(82, 160, 83, 1);
                         cursor: pointer;
                         line-height: 1.75;
+                        font-size: 1vw;
 
                         &:hover {
                             background-color: rgba(82, 160, 83, 0.8);
+                        }
+
+                        @media screen and (max-width: 768px) {
+                            padding: 1rem;
+                            font-size: 1.25rem;
                         }
 
                     }
@@ -311,4 +324,36 @@ main {
     @media screen and (max-width: 768px) {
         top: 30vh;
     }
+}
+
+div[class='control-item off'] {
+    background-color: rgba(255, 111, 0, 0.8) !important;
+
+    &:hover {
+        background-color: rgba(255, 111, 0, 0.6) !important;
+    }
+}
+
+.timerBtn {
+    padding: 0 1vw;
+    background-color: white;
+    border-radius: 2vw;
+    margin-top: 0.5vw;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 0.3vw 0.5vw 0.1vw rgba(0, 0, 0, 0.2);
+}
+
+input[type="number"] {
+    width: 4rem;
+    padding: 0.25vw;
+    border: none;
+    font-weight: bold;
+}
+
+input[type="time"] {
+
+    padding: 0.25vw;
+    border: none;
+    font-weight: bold;
 }
