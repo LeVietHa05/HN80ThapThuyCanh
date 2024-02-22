@@ -105,11 +105,10 @@
     let chosingRight = document.getElementById('chosingRight');
 
     if (Array.from(items).some(item => item.getAttribute('target') === 'true')) {
-      main.style.display = 'grid';
-      main.style.gridTemplateColumns = '60% 40%';
+      main.classList.add('main-chosing')
       chosingRight.style.display = 'flex';
     } else {
-      main.style.display = 'block';
+      main.classList.remove('main-chosing')
       chosingRight.style.display = 'none';
     }
   }
