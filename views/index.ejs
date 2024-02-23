@@ -74,7 +74,7 @@
     <main>
         <div id="indexLeft">
             <img src="/images/thap.png" alt="">
-            <div class="font-1-5vw">Chế độ: Tự động</div>
+            <div class="font-1-5vw">Chế độ: <span id="currentMode"></span></div>
         </div>
 
         <div id="indexRight">
@@ -202,37 +202,37 @@
                 console.log('scroll up');
             });
 
-            let isScrolling = false;
-            window.addEventListener('scroll', handleScroll);
+            // let isScrolling = false;
+            // window.addEventListener('scroll', handleScroll);
 
-            function handleScroll() {
-                if (!isScrolling) {
-                    isScrolling = true;
-                    // Check the scroll direction
-                    // make sure it 
-                    const scrollDirection = window.scrollY > prevScrollY + 10 ? 'down' : 'up';
+            // function handleScroll() {
+            //     if (!isScrolling) {
+            //         isScrolling = true;
+            //         // Check the scroll direction
+            //         // make sure it 
+            //         const scrollDirection = window.scrollY > prevScrollY + 10 ? 'down' : 'up';
 
-                    // Log based on scroll direction
-                    if (scrollDirection === 'down') {
-                        scrollDown();
-                        console.log('111');
-                    } else if (scrollDirection === 'up') {
-                        scrollUp();
-                        console.log('222');
-                    }
+            //         // Log based on scroll direction
+            //         if (scrollDirection === 'down') {
+            //             scrollDown();
+            //             console.log('111');
+            //         } else if (scrollDirection === 'up') {
+            //             scrollUp();
+            //             console.log('222');
+            //         }
 
-                    // Store previous scroll position for comparison
-                    prevScrollY = window.scrollY;
+            //         // Store previous scroll position for comparison
+            //         prevScrollY = window.scrollY;
 
-                    // Debounce the scroll event listener
-                    setTimeout(() => {
-                        isScrolling = false;
-                    }, 500);
-                }
-            }
+            //         // Debounce the scroll event listener
+            //         setTimeout(() => {
+            //             isScrolling = false;
+            //         }, 500);
+            //     }
+            // }
 
-            // Initialize prevScrollY variable
-            let prevScrollY = window.scrollY;
+            // // Initialize prevScrollY variable
+            // let prevScrollY = window.scrollY;
 
 
         }
@@ -326,6 +326,7 @@
             [control.timeRangeBtsTower.start, control.timeRangeBtsTower.end] = [controlData.timeRangeBtsTower.split('-')[0], controlData.timeRangeBtsTower.split('-')[1]];
             // console.log(control);
             manual.innerHTML = control.manual ? "ON" : "OFF";
+            currentMode.innerHTML = control.manual ? "Thủ công" : "Tự động";
             isLightControl.innerHTML = control.isLightControl ? "ON" : "OFF";
             isInsectLightControl.innerHTML = control.isInsectLightControl ? "ON" : "OFF";
             isPump1Control.innerHTML = control.isPump1Control ? "ON" : "OFF";
@@ -343,6 +344,7 @@
         controlItem1.addEventListener('click', () => {
             control.manual = !control.manual;
             manual.innerHTML = control.manual ? "ON" : "OFF";
+            currentMode.innerHTML = control.manual ? "Thủ công" : "Tự động";
             //TODO: if (manual) then disable all the control
             // here
             socket.emit('/web/control', { manualMode: control.manual })
