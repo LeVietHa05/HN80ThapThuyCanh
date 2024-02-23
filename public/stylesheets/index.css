@@ -171,7 +171,8 @@ main {
     grid-template-columns: 30% 70%;
     align-items: center;
     justify-content: center;
-    position: fixed;
+    /* position: fixed; */
+    overflow: hidden;
 
     @media screen and (max-width: 768px) {
         grid-template-columns: 100%;
