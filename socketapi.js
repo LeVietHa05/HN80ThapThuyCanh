@@ -70,7 +70,7 @@ io.on("connection", (socket) => {
             dataSentEsp.control.timeEndBtsHeater = res.timeRangeBtsHeater.split("-")[1];
             // console.log(dataSentEsp);
             console.log("send control data to esp");
-            socket.broadcast.emit("/esp/control", data);
+            socket.broadcast.emit("/esp/control", dataSentEsp);
         } catch (e) {
             console.log(e)
         }

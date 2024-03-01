@@ -337,7 +337,7 @@
 
         updateControlData();
 
-        manual.addEventListener('click', () => {
+        controlItem1.addEventListener('click', () => {
             control.manual = !control.manual;
             manual.innerHTML = control.manual ? "ON" : "OFF";
             //TODO: if (manual) then disable all the control
@@ -346,35 +346,35 @@
             socket.emit('/web/control', { manualMode: control.manual })
         })
 
-        isLightControl.addEventListener('click', () => {
+        controlItem2.addEventListener('click', () => {
             if (!control.manual) return alert('please turn on manual mode');
             control.isLightControl = !control.isLightControl;
             isLightControl.innerHTML = control.isLightControl ? "ON" : "OFF";
             socket.emit('/web/control', { isLightControl: control.isLightControl })
         })
 
-        isInsectLightControl.addEventListener('click', () => {
+        controlItem3.addEventListener('click', () => {
             if (!control.manual) return alert('please turn on manual mode');
             control.isInsectLightControl = !control.isInsectLightControl;
             isInsectLightControl.innerHTML = control.isInsectLightControl ? "ON" : "OFF";
             socket.emit('/web/control', { isInsectLightControl: control.isInsectLightControl })
         })
 
-        isPump1Control.addEventListener('click', () => {
+        controlItem4.addEventListener('click', () => {
             if (!control.manual) return alert('please turn on manual mode');
             control.isPump1Control = !control.isPump1Control;
             isPump1Control.innerHTML = control.isPump1Control ? "ON" : "OFF";
             socket.emit('/web/control', { isPump1Control: control.isPump1Control })
         })
 
-        isPump2Control.addEventListener('click', () => {
+        controlItem5.addEventListener('click', () => {
             if (!control.manual) return alert('please turn on manual mode');
             control.isPump2Control = !control.isPump2Control;
             isPump2Control.innerHTML = control.isPump2Control ? "ON" : "OFF";
             socket.emit('/web/control', { isPump2Control: control.isPump2Control })
         })
 
-        isPump3Control.addEventListener('click', () => {
+        controlItem6.addEventListener('click', () => {
             if (!control.manual) return alert('please turn on manual mode');
             control.isPump3Control = !control.isPump3Control;
             isPump3Control.innerHTML = control.isPump3Control ? "ON" : "OFF";
