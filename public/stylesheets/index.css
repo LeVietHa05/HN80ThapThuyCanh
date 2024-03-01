@@ -287,6 +287,7 @@ main {
                         line-height: 1.75;
                         font-size: 1vw;
 
+
                         &:hover {
                             background-color: rgba(82, 160, 83, 0.8);
                         }
@@ -296,6 +297,30 @@ main {
                             font-size: 1.25rem;
                         }
 
+                    }
+
+                    .control-item-duo {
+                        display: flex;
+                        flex-flow: row nowrap;
+                        justify-content: space-between;
+                        width: 100%;
+                        overflow: hidden;
+                        box-shadow: 0 0.2vw 0.2vw 0.1vw rgba(0, 0, 0, 0.2);
+                        
+                        >div {
+                            height: 100%;
+                            width: 100%;
+                            text-align: center;
+                            display: grid;
+                            align-content: center;
+                            box-shadow: none!important;
+
+                            &:hover {
+                                background-color: rgba(0, 255, 4, 0.5)!important;
+                                box-shadow: 0 0.2vw 0.2vw 0.1vw rgba(0, 0, 0, 1);
+                                z-index: 10;
+                            }
+                        }
                     }
                 }
             }
@@ -327,7 +352,7 @@ main {
     }
 }
 
-div[class='control-item off'] {
+div[class~='off'] {
     background-color: rgba(255, 111, 0, 0.8) !important;
 
     &:hover {

@@ -112,49 +112,52 @@
                 <div id="controlTab">
                     <div>
                         <div class="control-item" id="controlItem1">
-                            Manual Mode:<span id="manual" js-btn="1">OFF</span>
+                            Chế độ thủ công:<span id="manual" js-btn="1">Tắt</span>
                         </div>
-                        <div class="control-item" id="controlItem2">
-                            Light Control: <span id="isLightControl" js-btn="1">OFF</span>
+                        <div class="control-item" id="controlItem11">
+                            Ô dù:<span id="isUmbrellaControl" js-btn="1">Tắt</span>
                         </div>
-                        <div class="control-item" id="controlItem3">Insect Light Control: <span
-                                id="isInsectLightControl" js-btn="1">OFF</span></div>
-                        <div class="control-item" id="controlItem4">Pump 1 Control: <span id="isPump1Control"
-                                js-btn="1">OFF</span></div>
-                        <div class="control-item" id="controlItem5">Pump 2 Control: <span id="isPump2Control"
-                                js-btn="1">OFF</span></div>
-                        <div class="control-item" id="controlItem6">Pump 3 Control: <span id="isPump3Control"
-                                js-btn="1">OFF</span></div>
+                        <div class="control-item control-item-duo">
+                            <div id="controlItem2">Đèn chiếu sáng: <span id="isLightControl" js-btn="1">Tắt</span></div>
+                            <div id="controlItem3">Đèn bắt côn trùng: <span id="isInsectLightControl"
+                                    js-btn="1">Tắt</span></div>
+                        </div>
+                        <div class="control-item control-item-duo">
+                            <div id="controlItem4">Bơm 1: <span id="isPump1Control" js-btn="1">Tắt</span></div>
+                            <div id="controlItem5">Bơm 2: <span id="isPump2Control" js-btn="1">Tắt</span></div>
+                            <div id="controlItem6">Bơm 2: <span id="isPump3Control" js-btn="1">Tắt</span></div>
+                        </div>
+
                         <div class="control-item" id="controlItem7">Time Range Bts Heater
                             <div class="flex-row gap-2vw">
-                                ON:
+                                Bật:
                                 <input type="time" id="timeRangeBtsHeaterStart">
-                                - OFF: <input type="time" id="timeRangeBtsHeaterStop">
+                                - Tắt: <input type="time" id="timeRangeBtsHeaterStop">
                             </div>
 
                             <span id="timeRangeBtsHeater" js-btn="1" class="timerBtn">SET</span>
                         </div>
                         <div class="control-item" id="controlItem8">Time Range Pump Tower
                             <div class="flex-row gap-2vw">
-                                ON:
+                                Bật:
                                 <input type="time" id="timeRangePumpTowerStart">
-                                - OFF: <input type="time" id="timeRangePumpTowerStop">
+                                - Tắt: <input type="time" id="timeRangePumpTowerStop">
                             </div>
 
                             <span id="timeRangePumpTower" js-btn="1" class="timerBtn">SET</span>
                         </div>
                         <div class="control-item" id="controlItem9">Time Range Bts Tower
                             <div class="flex-row gap-2vw">
-                                ON:
+                                Bật:
                                 <input type="time" id="timeRangeBtsTowerStart">
-                                - OFF: <input type="time" id="timeRangeBtsTowerStop">
+                                - Tắt: <input type="time" id="timeRangeBtsTowerStop">
                             </div>
 
                             <span id="timeRangeBtsTower" js-btn="1" class="timerBtn">SET</span>
                         </div>
                         <div class="control-item" id="controlItem10">
-                            <div>Time On Pump Tower: <input type="number" id="timeOnPumpTowerOn" min="1"> (second)</div>
-                            <div>Time Off Pump Tower: <input type="number" id="timeOnPumpTowerOff" min="1"> (second)
+                            <div>Time On Pump Tower: <input type="number" id="timeOnPumpTowerOn" min="1"> (Giây)</div>
+                            <div>Time Off Pump Tower: <input type="number" id="timeOnPumpTowerOff" min="1"> (Giây)
                             </div>
                             <div id="timeOnPumpTower" js-btn="1" class="timerBtn">set</div>
                         </div>
@@ -325,17 +328,18 @@
             [control.timeRangePumpTower.start, control.timeRangePumpTower.end] = [controlData.timeRangePumpTower.split('-')[0], controlData.timeRangePumpTower.split('-')[1]];
             [control.timeRangeBtsTower.start, control.timeRangeBtsTower.end] = [controlData.timeRangeBtsTower.split('-')[0], controlData.timeRangeBtsTower.split('-')[1]];
             // console.log(control);
-            manual.innerHTML = control.manual ? "ON" : "OFF";
+            manual.innerHTML = control.manual ? "Bật" : "Tắt";
             currentMode.innerHTML = control.manual ? "Thủ công" : "Tự động";
-            isLightControl.innerHTML = control.isLightControl ? "ON" : "OFF";
-            isInsectLightControl.innerHTML = control.isInsectLightControl ? "ON" : "OFF";
-            isPump1Control.innerHTML = control.isPump1Control ? "ON" : "OFF";
-            isPump2Control.innerHTML = control.isPump2Control ? "ON" : "OFF";
-            isPump3Control.innerHTML = control.isPump3Control ? "ON" : "OFF";
-            timeRangeBtsHeater.innerHTML = `SET NEW: ${control.timeRangeBtsHeater.start} - ${control.timeRangeBtsHeater.end}`;
-            timeRangePumpTower.innerHTML = `SET NEW: ${control.timeRangePumpTower.start} - ${control.timeRangePumpTower.end}`;
-            timeRangeBtsTower.innerHTML = `SET NEW: ${control.timeRangeBtsTower.start} - ${control.timeRangeBtsTower.end}`;
-            timeOnPumpTower.innerHTML = `SET NEW: ON: ${control.timeOnPumpTower} - OFF: ${control.timeOffPumpTower}`;
+            isLightControl.innerHTML = control.isLightControl ? "Bật" : "Tắt";
+            isInsectLightControl.innerHTML = control.isInsectLightControl ? "Bật" : "Tắt";
+            isPump1Control.innerHTML = control.isPump1Control ? "Bật" : "Tắt";
+            isPump2Control.innerHTML = control.isPump2Control ? "Bật" : "Tắt";
+            isPump3Control.innerHTML = control.isPump3Control ? "Bật" : "Tắt";
+            isUmbrellaControl.innerHTML = control.isUmbrellaControl ? "Bật" : "Tắt";
+            timeRangeBtsHeater.innerHTML = `Lịch mới: ${control.timeRangeBtsHeater.start} - ${control.timeRangeBtsHeater.end}`;
+            timeRangePumpTower.innerHTML = `Lịch mới: ${control.timeRangePumpTower.start} - ${control.timeRangePumpTower.end}`;
+            timeRangeBtsTower.innerHTML = `Lịch mới: ${control.timeRangeBtsTower.start} - ${control.timeRangeBtsTower.end}`;
+            timeOnPumpTower.innerHTML = `Lịch mới: Bật: ${control.timeOnPumpTower} - Tắt: ${control.timeOffPumpTower}`;
 
         }
 
@@ -343,7 +347,7 @@
 
         controlItem1.addEventListener('click', () => {
             control.manual = !control.manual;
-            manual.innerHTML = control.manual ? "ON" : "OFF";
+            manual.innerHTML = control.manual ? "Bật" : "Tắt";
             currentMode.innerHTML = control.manual ? "Thủ công" : "Tự động";
             //TODO: if (manual) then disable all the control
             // here
@@ -353,36 +357,58 @@
         controlItem2.addEventListener('click', () => {
             if (!control.manual) return alert('please turn on manual mode');
             control.isLightControl = !control.isLightControl;
-            isLightControl.innerHTML = control.isLightControl ? "ON" : "OFF";
+            isLightControl.innerHTML = control.isLightControl ? "Bật" : "Tắt";
             socket.emit('/web/control', { isLightControl: control.isLightControl })
         })
 
         controlItem3.addEventListener('click', () => {
             if (!control.manual) return alert('please turn on manual mode');
             control.isInsectLightControl = !control.isInsectLightControl;
-            isInsectLightControl.innerHTML = control.isInsectLightControl ? "ON" : "OFF";
+            isInsectLightControl.innerHTML = control.isInsectLightControl ? "Bật" : "Tắt";
             socket.emit('/web/control', { isInsectLightControl: control.isInsectLightControl })
         })
 
         controlItem4.addEventListener('click', () => {
             if (!control.manual) return alert('please turn on manual mode');
             control.isPump1Control = !control.isPump1Control;
-            isPump1Control.innerHTML = control.isPump1Control ? "ON" : "OFF";
+            isPump1Control.innerHTML = control.isPump1Control ? "Bật" : "Tắt";
             socket.emit('/web/control', { isPump1Control: control.isPump1Control })
         })
 
         controlItem5.addEventListener('click', () => {
             if (!control.manual) return alert('please turn on manual mode');
             control.isPump2Control = !control.isPump2Control;
-            isPump2Control.innerHTML = control.isPump2Control ? "ON" : "OFF";
+            isPump2Control.innerHTML = control.isPump2Control ? "Bật" : "Tắt";
             socket.emit('/web/control', { isPump2Control: control.isPump2Control })
         })
 
         controlItem6.addEventListener('click', () => {
             if (!control.manual) return alert('please turn on manual mode');
             control.isPump3Control = !control.isPump3Control;
-            isPump3Control.innerHTML = control.isPump3Control ? "ON" : "OFF";
+            isPump3Control.innerHTML = control.isPump3Control ? "Bật" : "Tắt";
             socket.emit('/web/control', { isPump3Control: control.isPump3Control })
+        })
+
+        let umbrella30sDisable = false;
+        const umbrellaChangeUIFnc = () => {
+            if (!umbrella30sDisable) {
+                if (!control.manual) return alert('please turn on manual mode');
+                control.isUmbrellaControl = !control.isUmbrellaControl;
+                isUmbrellaControl.innerHTML = control.isUmbrellaControl ? "Bật" : "Tắt";
+                socket.emit('/web/control', { isUmbrellaControl: control.isUmbrellaControl });
+                umbrella30sDisable = true;
+                resetUmbrella30sDisable();
+            } else {
+                alert('Chờ 30 giây để ô thực hiện xong hành động trước đó');
+            }
+        }
+        const resetUmbrella30sDisable = () => {
+            setTimeout(() => {
+                umbrella30sDisable = false;
+            }, 3000);
+        }
+        controlItem11.addEventListener('click', () => {
+            umbrellaChangeUIFnc()
         })
 
         timeRangeBtsHeater.addEventListener('click', () => {
@@ -433,10 +459,10 @@
             socket.emit('/web/control', { timeOnPumpTower: control.timeOnPumpTower, timeOffPumpTower: control.timeOffPumpTower })
         })
 
-        let toggleItem = [controlItem1, controlItem2, controlItem3, controlItem4, controlItem5, controlItem6];
+        let toggleItem = [controlItem1, controlItem2, controlItem3, controlItem4, controlItem5, controlItem6, controlItem11];
         toggleItem.forEach(item => {
             function changeControlItemColor() {
-                if (item.querySelector('span').innerHTML == "ON") {
+                if (item.querySelector('span').innerHTML == "Bật") {
                     item.classList.remove('off')
                 } else {
                     item.classList.add('off')
@@ -503,6 +529,7 @@
             isPump1Control: 0, //true or false
             isPump2Control: 0, //true or false
             isPump3Control: 0, //true or false
+            isUmbrellaControl: 0, //true or false
             //TODO: this is input type time
             timeRangeBtsHeater: { //trong thời điểm nào thì sò nhiệt hoạt động
                 start: "00:00",
