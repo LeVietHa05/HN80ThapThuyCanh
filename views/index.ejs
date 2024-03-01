@@ -115,7 +115,7 @@
                             Chế độ thủ công:<span id="manual" js-btn="1">Tắt</span>
                         </div>
                         <div class="control-item" id="controlItem11">
-                            Ô dù:<span id="isUmbrellaControl" js-btn="1">Tắt</span>
+                            Ô dù:<span id="umbrellaControl" js-btn="1">Tắt</span>
                         </div>
                         <div class="control-item control-item-duo">
                             <div id="controlItem2">Đèn chiếu sáng: <span id="isLightControl" js-btn="1">Tắt</span></div>
@@ -335,7 +335,7 @@
             isPump1Control.innerHTML = control.isPump1Control ? "Bật" : "Tắt";
             isPump2Control.innerHTML = control.isPump2Control ? "Bật" : "Tắt";
             isPump3Control.innerHTML = control.isPump3Control ? "Bật" : "Tắt";
-            isUmbrellaControl.innerHTML = control.isUmbrellaControl ? "Bật" : "Tắt";
+            umbrellaControl.innerHTML = control.umbrellaControl ? "Bật" : "Tắt";
             timeRangeBtsHeater.innerHTML = `Lịch mới: ${control.timeRangeBtsHeater.start} - ${control.timeRangeBtsHeater.end}`;
             timeRangePumpTower.innerHTML = `Lịch mới: ${control.timeRangePumpTower.start} - ${control.timeRangePumpTower.end}`;
             timeRangeBtsTower.innerHTML = `Lịch mới: ${control.timeRangeBtsTower.start} - ${control.timeRangeBtsTower.end}`;
@@ -393,9 +393,9 @@
         const umbrellaChangeUIFnc = () => {
             if (!umbrella30sDisable) {
                 if (!control.manual) return alert('please turn on manual mode');
-                control.isUmbrellaControl = !control.isUmbrellaControl;
-                isUmbrellaControl.innerHTML = control.isUmbrellaControl ? "Bật" : "Tắt";
-                socket.emit('/web/control', { isUmbrellaControl: control.isUmbrellaControl });
+                control.umbrellaControl = !control.umbrellaControl;
+                umbrellaControl.innerHTML = control.umbrellaControl ? "Bật" : "Tắt";
+                socket.emit('/web/control', { umbrellaControl: control.umbrellaControl });
                 umbrella30sDisable = true;
                 resetUmbrella30sDisable();
             } else {
@@ -529,7 +529,7 @@
             isPump1Control: 0, //true or false
             isPump2Control: 0, //true or false
             isPump3Control: 0, //true or false
-            isUmbrellaControl: 0, //true or false
+            umbrellaControl: 0, //true or false
             //TODO: this is input type time
             timeRangeBtsHeater: { //trong thời điểm nào thì sò nhiệt hoạt động
                 start: "00:00",
