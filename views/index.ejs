@@ -4,7 +4,7 @@
     <nav id="navcc">
         <div>
             <div class="" id="logoNav">
-                <img src="/images/thapSinhThaiDaNang-Logo.png" onclick="window.location.href='/'" alt="">
+                <img src="/images/thapSinhThaiDaNang-Logo.png">
                 <p class="uppercase font-bold font-1-25vw">Tháp sinh thái xanh<br>đa năng</p>
             </div>
 
@@ -74,7 +74,7 @@
     <main>
         <div id="indexLeft">
             <img src="/images/thap.png" alt="">
-            <div class="font-1-5vw">Chế độ: Tự động</div>
+            <div class="font-1-5vw">Chế độ: <span id="currentMode"></span></div>
         </div>
 
         <div id="indexRight">
@@ -88,10 +88,13 @@
                 <span id="humi"> </span>
                 <span id="currentConditions">
                     <!-- js change the conditions inside -->
-                    <span class="d-none" id="currentConditionsRain"> <span class="material-symbols-outlined" style="font-weight: 900; color: blue;">rainy</span> Đang mưa</span>
-                    <span class="d-none" id=" currentConditionsNotRain"> <span class="material-symbols-outlined" style="font-weight: 900; color: rgb(0, 149, 255);">filter_drama</span> Không mưa</span>
-                    <span class="d-none" id="currentConditionsSunny"> <span class="material-symbols-outlined" style="font-weight: 900; color: orangered;">sunny</span> Trời nắng</span>
-                    </span>
+                    <span class="d-none" id="currentConditionsRain"> <span class="material-symbols-outlined"
+                            style="font-weight: 900; color: blue;">rainy</span> Đang mưa</span>
+                    <span class="d-none" id=" currentConditionsNotRain"> <span class="material-symbols-outlined"
+                            style="font-weight: 900; color: rgb(0, 149, 255);">filter_drama</span> Không mưa</span>
+                    <span class="d-none" id="currentConditionsSunny"> <span class="material-symbols-outlined"
+                            style="font-weight: 900; color: orangered;">sunny</span> Trời nắng</span>
+                </span>
             </div>
 
             <div id="indexContent">
@@ -129,7 +132,7 @@
                                 - OFF: <input type="time" id="timeRangeBtsHeaterStop">
                             </div>
 
-                            <span id="timeRangeBtsHeater" js-btn="1">set</span>
+                            <span id="timeRangeBtsHeater" js-btn="1" class="timerBtn">SET</span>
                         </div>
                         <div class="control-item" id="controlItem8">Time Range Pump Tower
                             <div class="flex-row gap-2vw">
@@ -138,7 +141,7 @@
                                 - OFF: <input type="time" id="timeRangePumpTowerStop">
                             </div>
 
-                            <span id="timeRangePumpTower" js-btn="1">set</span>
+                            <span id="timeRangePumpTower" js-btn="1" class="timerBtn">SET</span>
                         </div>
                         <div class="control-item" id="controlItem9">Time Range Bts Tower
                             <div class="flex-row gap-2vw">
@@ -147,13 +150,13 @@
                                 - OFF: <input type="time" id="timeRangeBtsTowerStop">
                             </div>
 
-                            <span id="timeRangeBtsTower" js-btn="1">set</span>
+                            <span id="timeRangeBtsTower" js-btn="1" class="timerBtn">SET</span>
                         </div>
                         <div class="control-item" id="controlItem10">
                             <div>Time On Pump Tower: <input type="number" id="timeOnPumpTowerOn" min="1"> (second)</div>
                             <div>Time Off Pump Tower: <input type="number" id="timeOnPumpTowerOff" min="1"> (second)
                             </div>
-                            <div id="timeOnPumpTower" js-btn="1">set</div>
+                            <div id="timeOnPumpTower" js-btn="1" class="timerBtn">set</div>
                         </div>
                     </div>
                 </div>
@@ -199,37 +202,37 @@
                 console.log('scroll up');
             });
 
-            let isScrolling = false;
-            window.addEventListener('scroll', handleScroll);
+            // let isScrolling = false;
+            // window.addEventListener('scroll', handleScroll);
 
-            function handleScroll() {
-                if (!isScrolling) {
-                    isScrolling = true;
-                    // Check the scroll direction
-                    // make sure it 
-                    const scrollDirection = window.scrollY > prevScrollY + 10 ? 'down' : 'up';
+            // function handleScroll() {
+            //     if (!isScrolling) {
+            //         isScrolling = true;
+            //         // Check the scroll direction
+            //         // make sure it 
+            //         const scrollDirection = window.scrollY > prevScrollY + 10 ? 'down' : 'up';
 
-                    // Log based on scroll direction
-                    if (scrollDirection === 'down') {
-                        scrollDown();
-                        console.log('111');
-                    } else if (scrollDirection === 'up') {
-                        scrollUp();
-                        console.log('222');
-                    }
+            //         // Log based on scroll direction
+            //         if (scrollDirection === 'down') {
+            //             scrollDown();
+            //             console.log('111');
+            //         } else if (scrollDirection === 'up') {
+            //             scrollUp();
+            //             console.log('222');
+            //         }
 
-                    // Store previous scroll position for comparison
-                    prevScrollY = window.scrollY;
+            //         // Store previous scroll position for comparison
+            //         prevScrollY = window.scrollY;
 
-                    // Debounce the scroll event listener
-                    setTimeout(() => {
-                        isScrolling = false;
-                    }, 500);
-                }
-            }
+            //         // Debounce the scroll event listener
+            //         setTimeout(() => {
+            //             isScrolling = false;
+            //         }, 500);
+            //     }
+            // }
 
-            // Initialize prevScrollY variable
-            let prevScrollY = window.scrollY;
+            // // Initialize prevScrollY variable
+            // let prevScrollY = window.scrollY;
 
 
         }
@@ -323,15 +326,16 @@
             [control.timeRangeBtsTower.start, control.timeRangeBtsTower.end] = [controlData.timeRangeBtsTower.split('-')[0], controlData.timeRangeBtsTower.split('-')[1]];
             // console.log(control);
             manual.innerHTML = control.manual ? "ON" : "OFF";
+            currentMode.innerHTML = control.manual ? "Thủ công" : "Tự động";
             isLightControl.innerHTML = control.isLightControl ? "ON" : "OFF";
             isInsectLightControl.innerHTML = control.isInsectLightControl ? "ON" : "OFF";
             isPump1Control.innerHTML = control.isPump1Control ? "ON" : "OFF";
             isPump2Control.innerHTML = control.isPump2Control ? "ON" : "OFF";
             isPump3Control.innerHTML = control.isPump3Control ? "ON" : "OFF";
-            timeRangeBtsHeater.innerHTML = `set: ${control.timeRangeBtsHeater.start} - ${control.timeRangeBtsHeater.end}`;
-            timeRangePumpTower.innerHTML = `set: ${control.timeRangePumpTower.start} - ${control.timeRangePumpTower.end}`;
-            timeRangeBtsTower.innerHTML = `set: ${control.timeRangeBtsTower.start} - ${control.timeRangeBtsTower.end}`;
-            timeOnPumpTower.innerHTML = `set: ON: ${control.timeOnPumpTower} - OFF: ${control.timeOffPumpTower}`;
+            timeRangeBtsHeater.innerHTML = `SET NEW: ${control.timeRangeBtsHeater.start} - ${control.timeRangeBtsHeater.end}`;
+            timeRangePumpTower.innerHTML = `SET NEW: ${control.timeRangePumpTower.start} - ${control.timeRangePumpTower.end}`;
+            timeRangeBtsTower.innerHTML = `SET NEW: ${control.timeRangeBtsTower.start} - ${control.timeRangeBtsTower.end}`;
+            timeOnPumpTower.innerHTML = `SET NEW: ON: ${control.timeOnPumpTower} - OFF: ${control.timeOffPumpTower}`;
 
         }
 
@@ -340,9 +344,9 @@
         controlItem1.addEventListener('click', () => {
             control.manual = !control.manual;
             manual.innerHTML = control.manual ? "ON" : "OFF";
+            currentMode.innerHTML = control.manual ? "Thủ công" : "Tự động";
             //TODO: if (manual) then disable all the control
             // here
-
             socket.emit('/web/control', { manualMode: control.manual })
         })
 
@@ -429,6 +433,23 @@
             socket.emit('/web/control', { timeOnPumpTower: control.timeOnPumpTower, timeOffPumpTower: control.timeOffPumpTower })
         })
 
+        let toggleItem = [controlItem1, controlItem2, controlItem3, controlItem4, controlItem5, controlItem6];
+        toggleItem.forEach(item => {
+            function changeControlItemColor() {
+                if (item.querySelector('span').innerHTML == "ON") {
+                    item.classList.remove('off')
+                } else {
+                    item.classList.add('off')
+                }
+            }
+            item.style.boxShadow = "0 0.2vw 0.2vw 0.1vw rgba(0, 0, 0, 0.2)";
+            setTimeout(() => {
+                changeControlItemColor();
+            }, 1000);
+            item.addEventListener('click', () => {
+                changeControlItemColor();
+            })
+        })
 
     </script>
     <script src="../socket.io/socket.io.js"></script>
