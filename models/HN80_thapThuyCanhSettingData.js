@@ -15,6 +15,7 @@ const HN80_thapThuyCanhSettingData = new Schema({
     timeRangeBtsTower: String,
     timeOnPumpTower: Number,
     timeOffPumpTower: Number,
+    umbrellaControl: Boolean,
 });
 
 module.exports = mongoose.model('HN80_TTC_SettingData', HN80_thapThuyCanhSettingData);
