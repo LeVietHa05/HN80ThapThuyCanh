@@ -73,7 +73,19 @@ async function addSetting() {
     await SettingData.create(data);
 }
 
-addSetting().then(() => {
+async function deleteData() {
+    await MeasureData.deleteMany({});
+}
+
+// addSetting().then(() => {
+//     console.log("Done");
+//     process.exit(0);
+// }).catch((err) => {
+//     console.log("Error: " + err);
+//     process.exit(1);
+// })
+
+addData(30).then(() => {
     console.log("Done");
     process.exit(0);
 }).catch((err) => {
@@ -81,10 +93,11 @@ addSetting().then(() => {
     process.exit(1);
 })
 
-// addData(30).then(() => {
+// deleteData().then(() => {
 //     console.log("Done");
 //     process.exit(0);
-// }).catch((err) => {
+// }
+// ).catch((err) => {
 //     console.log("Error: " + err);
 //     process.exit(1);
 // })

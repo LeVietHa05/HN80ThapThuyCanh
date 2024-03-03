@@ -480,46 +480,6 @@
     </script>
     <script src="../socket.io/socket.io.js"></script>
     <script>
-        //a envir class to save the data
-        class Envir {
-            constructor(number, unit, name, el = null) {
-                this.number = number;
-                this.unit = unit;
-                this.name = name;
-                this.el = el;
-                this.update();
-            }
-            get getValue() {
-                return `${this.number} ${this.unit}`;
-            }
-            set setValue(val) {
-                this.number = val;
-                if (this.el) {
-                    this.el.innerHTML = `${this.number} ${this.unit}`;
-                }
-            }
-            update() {
-                if (this.el) {
-                    this.el.innerHTML = `${this.number} ${this.unit}`;
-                }
-            }
-
-        }
-
-        //save the lastest data
-        let temp = new Envir(25, "°C", "nhiệt độ", document.getElementById('temp'));
-        let humi = new Envir(50, "%", "độ ẩm", document.getElementById('humi'));
-        let phVal = new Envir(7, "", "độ pH");
-        let tdsVal = new Envir(500, "ppm", "TDS");
-        let waterTemp = new Envir(25, "°C", "nhiệt độ nước");
-        let lux = new Envir(1000, "lux", "ánh sáng");
-        let isRain = new Envir(0, "", "mưa");
-        let isWater1LevelLow = new Envir(0, "", "mực nước 1");
-        let isWater2LevelLow = new Envir(0, "", "mực nước 2");
-        let isWater3LevelLow = new Envir(0, "", "mực nước 3");
-        let isBtsHeaterOn = new Envir(0, "", "sò nhiệt");
-
-        let envirs = { temp: temp, humi: humi, phVal: phVal, tdsVal: tdsVal, waterTemp: waterTemp, lux: lux, isRain: isRain, isWater1LevelLow: isWater1LevelLow, isWater2LevelLow: isWater2LevelLow, isWater3LevelLow: isWater3LevelLow, isBtsHeaterOn: isBtsHeaterOn };
         //save the control data 
         let control = {
             //TODO: this is input type button
@@ -549,6 +509,71 @@
             timeOnPumpTower: 0, //thời gian bơm hoạt động liên tục (giây)
             timeOffPumpTower: 0, //thời gian bơm nghỉ sau khi hoạt động (giây)
         }
+        //a envir class to save the data
+        class Envir {
+            constructor(number, unit, name, el = null) {
+                this.number = number;
+                this.unit = unit;
+                this.name = name;
+                this.el = el;
+                this.update();
+            }
+            get getValue() {
+                return `${this.number} ${this.unit}`;
+            }
+            set setValue(val) {
+                if (this.name == "ô dù") {
+                    if (val == 1) {
+                        val = true;
+                    } else if (val == 0) {
+                        val = false;
+                    }
+                }
+                this.number = val;
+                this.update();
+            }
+            update() {
+                if (this.el) {
+                    this.el.innerHTML = `${this.number} ${this.unit}`;
+                }
+                if (this.name == "mưa") {
+                    if (this.number == 1) { //rain
+                        this.el[0].classList.remove('d-none'); //show rain icon
+                        this.el[1].classList.add('d-none');
+                        this.el[2].classList.add('d-none');
+                    } else if (this.number == 0) { //not rain // if cloudy
+                        this.el[0].classList.add('d-none');
+                        this.el[1].classList.remove('d-none'); //show not rain icon
+                        this.el[2].classList.add('d-none');
+                    } else { //sunny
+                        this.el[0].classList.add('d-none');
+                        this.el[1].classList.add('d-none');
+                        this.el[2].classList.remove('d-none');  //show sunny icon
+                    }
+                }
+                if (this.name == "ô dù") {
+                    control.umbrellaControl = this.number;
+                    umbrellaControl.innerHTML = control.umbrellaControl ? "Bật" : "Tắt";
+                }
+            }
+
+        }
+
+        //save the lastest data
+        let temp = new Envir(25, "°C", "nhiệt độ", document.getElementById('temp'));
+        let humi = new Envir(50, "%", "độ ẩm", document.getElementById('humi'));
+        let phVal = new Envir(7, "", "độ pH");
+        let tdsVal = new Envir(500, "ppm", "TDS");
+        let waterTemp = new Envir(25, "°C", "nhiệt độ nước");
+        let lux = new Envir(1000, "lux", "ánh sáng");
+        let isRain = new Envir(2, "", "mưa", document.querySelectorAll('#currentConditions > span'));
+        let isWater1LevelLow = new Envir(0, "", "mực nước 1");
+        let isWater2LevelLow = new Envir(0, "", "mực nước 2");
+        let isWater3LevelLow = new Envir(0, "", "mực nước 3");
+        let isBtsHeaterOn = new Envir(0, "", "sò nhiệt");
+        let isUmbrellaOpen = new Envir(false, "", "ô dù");
+
+        let envirs = { temp: temp, humi: humi, phVal: phVal, tdsVal: tdsVal, waterTemp: waterTemp, lux: lux, isRain: isRain, isWater1LevelLow: isWater1LevelLow, isWater2LevelLow: isWater2LevelLow, isWater3LevelLow: isWater3LevelLow, isBtsHeaterOn: isBtsHeaterOn, isUmbrellaOpen: isUmbrellaOpen };
 
 
         var socket = io();
@@ -563,7 +588,7 @@
             console.log(data);
             for (let key in data) {
                 if (envirs[key]) {
-                    envirs[key].setValue = data[key];
+                    envirs[key].setValue = +data[key];
                 }
             }
         })
