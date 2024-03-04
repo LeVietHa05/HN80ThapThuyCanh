@@ -31,9 +31,9 @@ io.on("connection", (socket) => {
         console.log(`[/esp/measure] from ${data.clientID} via socket id: ${socket.id}`);
         console.log(data.data);
         //update time for newMeasureData
-        // data.data.time = new Date();
-        // const newMeasureData = new MeasureData(data.data);
-        // let res = await newMeasureData.save();
+        data.data.time = new Date();
+        const newMeasureData = new MeasureData(data.data);
+        let res = await newMeasureData.save();
         // console.log(res);
         socket.broadcast.emit("/web/measure", data.data);
     })
