@@ -590,6 +590,12 @@
                 if (envirs[key]) {
                     envirs[key].setValue = +data[key];
                 }
+                //update the chart 
+                addNewData(charts[labels.findIndex(label => label.id == key)], (() => {
+                    let date = new Date();
+                    return `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+                })(), +data[key]);
+                removeChartData(charts[labels.findIndex(label => label.id == key)]);
             }
         })
 
@@ -626,6 +632,7 @@
         let labels = [{ name: "Nhiệt độ", id: "temp" }, { name: "Độ ẩm", id: "humi" }, { id: "waterTemp", name: "Nhiệt độ nước" }, { id: "phVal", name: "pH" }, { id: "tdsVal", name: "TDS" }, { id: "lux", name: "Lux" }]
         let chartIDs = ["tempChart", "humiChart", "waterTempChart", "phValChart", "tdsValChart", "luxChart"]
         let colors = ['red', 'blue', 'green', 'purple', 'brown', 'orange']
+        let chartData = {};
 
         let charts = [];
         let chartConfigs = [];
@@ -633,6 +640,7 @@
             getChartData(labels[i].id, '-1', 10)
                 .then(a => {
                     // console.log(a);
+                    chartData[labels[i].id] = a;
                     chartConfigs[i] = chartConfigGen(labels[i], a, colors[i]);
                     charts[i] = new Chart(document.getElementById(chartIDs[i]), chartConfigs[i]);
                 })
@@ -647,6 +655,9 @@
             chart.update();
         }
         function removeChartData(chart) {
+            if (!chart.data.labels.length > 10) {
+                return;
+            }
             chart.data.labels.shift();
             chart.data.datasets.forEach((dataset) => {
                 dataset.data.shift();
