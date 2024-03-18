@@ -591,11 +591,14 @@
                     envirs[key].setValue = +data[key];
                 }
                 //update the chart 
-                addNewData(charts[labels.findIndex(label => label.id == key)], (() => {
-                    let date = new Date();
-                    return `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
-                })(), +data[key]);
-                removeChartData(charts[labels.findIndex(label => label.id == key)]);
+                let keys = ["temp", "humi", "waterTemp", "phVal", "tdsVal", "lux"];
+                if (keys.includes(key)) {
+                    addNewData(charts[labels.findIndex(label => label.id == key)], (() => {
+                        let date = new Date();
+                        return `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+                    })(), +data[key]);
+                    removeChartData(charts[labels.findIndex(label => label.id == key)]);
+                }
             }
         })
 

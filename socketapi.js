@@ -63,6 +63,7 @@ io.on("connection", (socket) => {
             dataSentEsp.control.isPump2Control = res.isPump2Control;
             dataSentEsp.control.isPump3Control = res.isPump3Control;
             dataSentEsp.control.timeOnPumpTower = res.timeOnPumpTower;
+            dataSentEsp.control.umbrellaControl = res.umbrellaControl;
             dataSentEsp.control.timeOffPumpTower = res.timeOffPumpTower;
             dataSentEsp.control.timeStartBtsTower = res.timeRangeBtsTower.split("-")[0];
             dataSentEsp.control.timeEndBtsTower = res.timeRangeBtsTower.split("-")[1];

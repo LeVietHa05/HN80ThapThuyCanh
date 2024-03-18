@@ -14,7 +14,7 @@ router.get('/',async function (req, res, next) {
     res.redirect('/login');
   }
   
-  res.render('index', { title: 'Express', id: userid });
+  res.render('index', { title: 'Express', id: userid, treeName: user.chosenTree.treeName });
 });
 
 module.exports = router;
