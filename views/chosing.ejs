@@ -10,54 +10,6 @@
 
 
     <div id="chosingList">
-      <div class="chosing-item" id="chosingItem1">
-        <img src="/images/chose1.jpg" alt="">
-        <p>Loại cây adsfadsf asdfadsf asf adsf as1</p>
-      </div>
-      <div class="chosing-item" id="chosingItem2">
-        <img src="/images/chose1.jpg" alt="">
-        <p>Loại cây 2</p>
-      </div>
-      <div class="chosing-item" id="chosingItem3">
-        <img src="/images/chose1.jpg" alt="">
-        <p>Loại cây 3</p>
-      </div>
-      <div class="chosing-item" id="chosingItem4">
-        <img src="/images/chose1.jpg" alt="">
-        <p>Loại cây 4</p>
-      </div>
-      <div class="chosing-item" id="chosingItem5">
-        <img src="/images/chose1.jpg" alt="">
-        <p>Loại cây 5</p>
-      </div>
-      <div class="chosing-item" id="chosingItem6">
-        <img src="/images/chose1.jpg" alt="">
-        <p>Loại cây 6</p>
-      </div>
-      <div class="chosing-item" id="chosingItem7">
-        <img src="/images/chose1.jpg" alt="">
-        <p>Loại cây 7</p>
-      </div>
-      <div class="chosing-item" id="chosingItem8">
-        <img src="/images/chose1.jpg" alt="">
-        <p>Loại cây 8</p>
-      </div>
-      <div class="chosing-item" id="chosingItem9">
-        <img src="/images/chose1.jpg" alt="">
-        <p>Loại cây 9</p>
-      </div>
-      <div class="chosing-item" id="chosingItem10">
-        <img src="/images/chose1.jpg" alt="">
-        <p>Loại cây 10</p>
-      </div>
-      <div class="chosing-item" id="chosingItem11">
-        <img src="/images/chose1.jpg" alt="">
-        <p>Loại cây 11</p>
-      </div>
-      <div class="chosing-item" id="chosingItem12">
-        <img src="/images/chose1.jpg" alt="">
-        <p>Loại cây 12</p>
-      </div>
     </div>
   </div>
 
@@ -92,6 +44,419 @@
   <%= message %>
 </div>
 <% } %>
+
+<script>
+  const treeData = [
+    {
+        id: 1,
+        name: 'Rau Muống',
+        text: `<div>
+        <p>Giống rau này có phần thân non, mọc thẳng đứng, lá có hình thuôn dài đầu nhọn. Phần rễ mọc theo chùm tương đối phát
+          triển, khi già có hoa màu trắng hình chuông, rất mỏng, quả màu xanh/trắng cứng bên trong có hạt. Toàn bộ phần thân
+          và lá có màu xanh non. Rau muống cũng có một số đặc điểm sinh trưởng tương đối nổi bật, cụ thể như:</p>
+        <ul>
+          <li>Về nhiệt độ: Đối với mỗi giống rau khác nhau yêu cầu về nhiệt độ cũng có sự thay đổi. Về cơ bản, đây là giống
+            cây ưa nhiệt độ cao, trung bình từ 25 – 30 độ C là nhiệt độ thích hợp nhất để cây sinh trưởng và phát triển mạnh
+            mẽ.</li>
+          <li>Về thổ nhưỡng: Trên thực tế rau muống hoàn toàn không hề kén đất, loại rau này có thể mọc ở bất cứ khu vực nào.
+            Nhưng để rau luôn tươi non, bạn nên đảm bảo độ dinh dưỡng cần thiết cho đất cũng như duy trì độ pH ở mức trung
+            bình.</li>
+          <li>Về ánh sáng: Rau muống ưa sáng, bạn nên trồng chúng ở những khu vực có nguồn sáng trực tiếp như sân vườn, đồng
+            ruộng. Nếu ở thành phố, bạn có thể trồng rau trên ban công, khu vực sân thượng,…đảm bảo đủ ánh sáng cho cây phát
+            triển.</li>
+          <li>Thời vụ trồng: Thời điểm gieo trồng rau muống phù hợp nhất là từ tháng 2 đến tháng 8 hàng năm. Tránh thời điểm
+            thời tiết lạnh giá như các tháng 10 – tháng 1. Rau muống có thể trồng bằng hạt, trồng bằng thân với ưu điểm đồng
+            thời chúng có khả năng mọc trên đất hoặc mọc dưới nước.</li>
+        </ul>
+        <p> Khi trồng rau muống bằng phương pháp thủy canh, bạn nên ngâm ủ hạt muống giống trong nước ấm trong khoảng thời
+          gian từ
+          3 – 6 giờ, sau đó ủ hạt và giữ ẩm trong tối. Sau khi hạt nảy thành cây hai lá mầm thì chuyển vào các khay chứa dung
+          dịch thủy canh để chăm sóc.</p>
+        <p>Thời gian thích hợp để trồng rau muống là khoảng từ tháng 2 đến tháng 5. Thời gian để rau muống phát triển từ khi
+          gieo
+          hạt đến khi trưởng thành là khoảng 20 – 25 ngày.</p>
+      </div>`,
+    },
+
+    {
+        id: 2,
+        name: 'Rau dền',
+        text: `<div>
+        <p>Bên cạnh trồng thổ canh thì rau dền cũng là một loại rau dễ trồng với phương pháp thủy canh. Rau dền có hai loại
+          chính là rau dền trắng và rau dền đỏ. Rau dền có thể trồng quanh năm nhưng thời gian tốt nhất để gieo hạt rau dền là
+          từ tháng 2 đến tháng 7.</p>
+        <p>Hạt giống rau dền</p>
+        <ul>
+          <li>Chọn loại hạt giống tốt, mua ở đơn vị cung cấp uy tín, chất lượng.</li>
+          <li>Có thể sử dụng cành rau dền già để trồng. Tuy nhiên năng suất sẽ không cao.</li>
+        </ul>
+        <p>Ngâm hạt giống rau dền</p>
+        <ol>
+          <li>Để hạt giống rau dền nhanh nảy mầm cũng như tăng tỉ lệ nảy mầm thì bạn nên ngâm hạt giống trước khi ươm.</li>
+          <li>Ngâm hạt giống trong nước ấm (2 sôi + 3 lạnh) trong 3 tiếng.</li>
+          <li>Sau đó ủ vào khăn ẩm 24 tiếng cho hạt nứt mầm, loại bỏ những hạt lép, không nứt mầm.</li>
+        </ol>
+        <p>Ươm hạt rau dền</p>
+        <ul>
+          <li>Ươm hạt rau dền vào giá thể, sâu khoảng 1cm.</li>
+          <li>Tưới nước giữ ẩm cho hạt giống rau dền.</li>
+          <li>Sau đó mang các rọ nhựa đặt ở nơi khô ráo, thoáng mát, có nhiều ánh sáng.</li>
+          <li>Sau khoảng 1 tuần khi cây rau dền đã có từ 3 – 4 lá thì tiến hành chuyển lên hệ thống thủy canh để rau dền sinh
+            trưởng và phát triển.</li>
+        </ul>
+        <p>Pha dung dịch thủy canh</p>
+        <ul>
+          <li>Pha dung dịch thủy canh vào nước, khuấy đều.</li>
+          <li>Kiểm tra bằng bút đo nồng độ xem PH bằng 5.3 – 6, nồng độ dinh dưỡng 700 – 800 PPM là được.</li>
+        </ul>
+        <p>Cách chăm sóc rau dền trồng thủy canh: Đối với cách trồng rau dền thủy canh thì cách chăm sóc rất đơn giản, cụ thể
+          như sau:</p>
+        <ul>
+          <li>Ánh sáng:
+            <ul>
+              <li>Rau dền là loài ưa nắng do đó bạn cần đặt hệ thống thủy canh tại nơi có nhiều ánh sáng (tối thiểu 6 tiếng
+                nắng / ngày)</li>
+            </ul>
+          </li>
+          <li>
+            Dinh dưỡng
+            <ul>
+              <li>Giai đoạn cây con (3 – 4 lá): 700 – 800 PPM</li>
+              <li>Giai đoạn trưởng thành: 1000 – 1200 PPM</li>
+              <li>Giai đoạn thu hoạch: 900 – 1000 PPM</li>
+            </ul>
+          </li>
+          <li>PH: 5.3 – 6</li>
+        </ul>
+        <p>Rau dền trồng thủy canh rất ít sâu bệnh phá hoại. Do đó bạn có thể yên tâm về vấn đề này.
+          Trường hợp phát hiện sâu bệnh thì hãy loại bỏ nhanh những cây bị bệnh để tránh lây nhiễm sang các cây khác.
+          Dùng chế phẩm sinh học phun để diệt và phòng ngừa sâu bệnh.
+        </p>
+        <p>Rau dền trồng thủy canh cho thu hoạch rất nhanh (khoảng 15 ngày)
+          Rau dền có thể thu hoạch được rất nhiều lần nên khi thu hoạch bạn cắt ngang ngọn chừa khoảng 10 cm cho chúng tiếp
+          tục phát triển.
+        </p>
+      </div>`
+    },
+    {
+        id: 3,
+        name: 'Rau cải ngọt',
+        text: `<div>
+        <p style="white-space: pre;">Cải ngọt: Cải ngọt là một trong những loại quen thuộc được nhiều người ưa thích. Không chỉ có hương vị thơm ngon,
+          cải ngọt còn được biết đến với những tác dụng có lợi cho sức khỏe như: chữa các chứng ho, táo bón, phòng ngừa bệnh
+          trĩ, ung thư ruột kết, ung thư gan,…
+          Chọn hạt giống cây cải ngọt:
+      
+          Khâu chọn giống rất quan trọng trong trồng trọt. Hạt giống cải ngọt hiện nay rất đa dạng, nhưng nếu chia theo nguồn
+          gốc thì có hai loại chính cho bạn lựa chọn như sau:
+          Hạt giống cây cải ngọt Việt Nam: Giống cải ngọt nội địa có giá thành rẻ, dễ mua và phù hợp với điều kiện khí hậu
+          Việt Nam. Tuy nhiên loại hạt giống này có tỉ lệ nảy mầm không cao bằng hạt giống nhập khẩu.
+          Hạt giống cây cải ngọt nhập khẩu: Giống cải ngọt nhập khẩu tuy có giá thành cao hơn nhưng có tỉ lệ nảy mầm cao, rút
+          ngắn được thời gian sinh trưởng. Đặc biệt là các giống cây cải ngọt chịu nhiệt có thể sinh trưởng tốt trong môi
+          trường nắng nóng mùa hè.
+          Nếu bạn muốn trồng rau cải ăn quanh năm và mỗi vụ chỉ trong một thời gian ngắn thì tốt nhất nên lựa chọn loại hạt
+          giống nhập khẩu.
+          Cách trồng và chăm sóc cây cải ngọt thủy canh
+          Cách trồng và chăm sóc cây cải ngọt thủy canh như sau:
+          Bước 1: Ươm hạt
+          Để ươm hạt bạn có thể lựa chọn giá thể là mút xốp và xơ dừa. Hai nguyên liệu này đều sẽ có ưu nhược điểm riêng. Mút
+          xốp có giá thành rẻ, không thể tái sử dụng được còn xơ dừa có giá thành cao hơn nhưng giúp cây hút dinh dưỡng tốt,
+          sau mỗi vụ có thể dùng xơ dừa để trồng cây trên đất. Tùy theo nhu cầu mà bạn có thể lựa chọn loại giá thể phù hợp.
+          Đầu tiên bạn đem ngâm hạt trong nước khoảng 40 độ C trong 2-5 giờ, sau đó vớt hạt ra và để ráo. Tiếp đến là đến bước
+          chuẩn bị giá thể:
+          Nếu giá thể là mút xốp thì đặt mút xốp vào khay ươm hạt. Chú ý các lỗ nhỏ trên mút xốp, đó là vị trí gieo hạt.
+          Nếu giá thể là viên nén xơ dừa thì cho viên nén và rọ nhựa, tưới nước để viên nén xơ dừa nở ra, lắc nhẹ để xơ dừa
+          tán đều trong rọ. Xếp các rọ nhựa vào chậu.
+          Sau đó đem hạt giống đặt lên các giá thể. Nếu loại hạt giống bạn chọn là loại nhập khẩu thì chỉ cần gieo 1 hạt giống
+          1 ô hoặc 1 rọ nhựa mà thôi. Chú ý là nếu gieo trên mút xốp thì đừng gieo lút toàn bộ hạt. Còn nếu gieo trên xơ dừa
+          thì ấn nhẹ hạt giống xuống.
+          sau khi gieo hạt giống, ta tưới nước nhẹ lên bề mặt và cung cấp đủ ẩm cho giá thể. Đợi vài ngày cho đến khi cây bắt
+          đầu lên lá mầm thì có thể bổ dung dung dịch thủy canh để cây mau lớn. Dung dịch thủy canh khi này cần có nồng độ
+          thấp, khoảng 300ppm.
+          Bước 2: Chuyển cây con lên giàn
+          Cây ươm được 10 – 15 ngày sẽ bắt đầu ra lá thật. Khi cây có từ 3 lá thật thì ta tiến hành đưa lên giàn. Nếu là mút
+          xốp thì ta tách các cây con theo đường xẻ rãnh sẵn trên mút xốp. Mỗi ô vuông cho vào một rọ nhựa và đưa lên giàn
+          thủy canh.
+          Khi cây mới lên giàn, bạn cần bổ sung dung dịch thủy canh cho cây phát triển với nồng độ ở ngưỡng 600-800 ppm. Cần
+          chú ý đo nồng độ dung dịch trong nước để châm thêm dinh dưỡng và nước hợp lý. Thông thường 5-15 ngày bạn mới phải bổ
+          sung thêm dinh dưỡng cho cây.
+          Bước 3: Chăm sóc cây
+          Khi cây đã lên giàn thì việc chăm sóc cây rất đơn giản. Bạn không cần phải lo lắng tưới nước hay chăm cây mỗi ngày.
+          Tuy nhiên cũng nên chú ý quan sát sự phát triển của cây và loại bỏ các loại lá héo úa. Việc bổ sung dinh dưỡng là vô
+          cùng cần thiết. Cây càng lớn càng cần nhiều nước và chất dinh dưỡng, vì vậy 3-5 ngày bạn sẽ phải bổ sung thêm dinh
+          dưỡng cho cây (kiểm tra bằng bút đo nồng độ). Nồng độ lúc này được tăng lên là 800-1000 ppm.
+          Bước 4: Thu hoạch
+          Cây cải ngọt nếu trồng vụ hè sẽ thu hoạch sớm hơn vụ đông. Thời gian thu hoạch trong khoảng 25-40 ngày. Nếu trồng để
+          lấy rau ăn thì nên thu hoạch khi cây cao khoảng 20 – 30 cm để cây vẫn còn non và nhiều dinh dưỡng. Bạn có thể thu
+          hoạch theo hướng tỉa lá hoặc cả cây. Sau khi thu hoạch xong thì nên bắt đầu gieo trồng vụ mới để gối vụ cho các lần
+          sau.
+          Giống như một số loại rau cải khác, cải ngọt là loại cây ưa khí hậu lạnh và thường cải ngọt sẽ được trồng vào mùa
+          đông trong khoảng thời gian từ tháng 8 đến tháng 11.
+        </p>
+      </div>`
+    },
+    {
+        id: 4,
+        name: 'Cải bó xôi',
+        text: `<div>
+        <p style="white-space: pre;">Cải bó xôi: Việc trồng cải bó xôi bằng phương pháp thủy canh sẽ giúp rau sinh trưởng và
+          phát triển nhanh hơn, hạn chế sự xâm nhập của sâu bệnh, đặc biệt là không cần đến sự hỗ trợ của đất.
+          Việc trồng cải bó xôi bằng phương pháp thủy canh sẽ giúp rau sinh trưởng và phát triển nhanh hơn, hạn chế sự xâm
+          nhập của sâu bệnh, đặc biệt là không cần đến sự hỗ trợ của đất.
+          Các bước trồng rau cải bó xôi thủy canh
+          Bước 1: Gieo hạt giống
+          Sau khi mua hạt giống thủy canh cải bó xôi, các bạn nên ngâm trong nước ấm từ 6 đến 8 tiếng, loại bỏ các hạt giống
+          hỏng không có khả năng nảy mầm.
+          Sau đó, các bạn trải đều hạt giống trên một lớp giá thể, tưới nước thường xuyên, sau 15 ngày hạt giống sẽ nảy mầm,
+          ra lá thật. Sau đó, bạn chuyển chúng lên rọ nhựa thủy canh và đặt lên giàn trồng.
+          Bước 2: Pha chế dung dịch thủy canh
+          Bạn có thể sử dụng dung dịch thủy canh pha sẵn hoặc dung dịch thủy canh dạng bột để bổ sung dưỡng chất cho cây. Tốt
+          nhất nên sử dụng bút đo pH, bút đo ppm để kiểm tra nồng độ phù hợp.
+      
+          Bước 3: Kiểm soát sâu bệnh
+          Các bạn chú ý quan sát các giai đoạn phát triển của rau để phát hiện sớm sâu bệnh hại và tìm cách loại bỏ. Có thể
+          dùng các phương pháp sinh học loại bỏ sâu để đảm bảo nguồn rau sạch, an toàn hoặc dùng phương pháp tự nhiên như hỗn
+          hợp tỏi, ớt, rượu…
+          Bước 4: Thu hoạch
+          Bạn có thể thu hoạch thủy canh cải bó xôi sau khoảng 35 đến 40 ngày bằng cách tỉa lá hoặc thu chặt cả cây. Sau đó,
+          gieo trồng gối vụ cho các lần sau để luôn có nguồn rau sạch cho gia đình.
+        </p>
+      </div>`
+    },
+    {
+        id: 5,
+        name: 'Xà lách',
+        text: `
+        <div>
+          <p style="white-space: pre;">
+            Xà lách: Xà lách có thể trồng được quanh năm. Tuy nhiên, tại những tháng có khí hậu mát mẻ thì năng suất của xà lách
+            có thể tốt hơn. Thời gian sinh trưởng thông thường của xà lách là khoảng từ 40 -60 ngày tùy từng loại.
+            Lựa chọn giống rau xà lách để trồng thủy canh
+            Bạn nên chọn lựa một số giống rau xà lách phù hợp với trồng thủy canh ví dụ như:
+            Xà lách lá đa: giống này có lá màu xanh non, vị thơm ngọt dịu. Xà lách lá đa rất thích hợp để trồng tại các vùng có
+            khí hậu nhiệt đới nóng ẩm.
+            Xà lách lá xoăn: giống này có lá khá giòn, hình dáng dài và nhỏ, nhiều nếp uốn xoăn. Xà lách lá xoăn khá kén người
+            ăn do vị hơi đắng và chát. Tuy nhiên, nếu ăn quen bạn sẽ bị nghiền loại xà lách này.
+        
+            Xà lách Carol: giống này có rất nhiều chất dinh dưỡng giúp hỗ trợ gan, đường tiêu hóa, giảm thiểu một số vấn đề liên
+            quan như thiếu máu, tim mạch, mất ngủ. Xà lách Carol khi trồng bằng kỹ thuật thủy canh có độ tươi tốt cao. Tuy
+            nhiên, cũng có vị hơi đắng, giòn mát, làm salad rất giàu dinh dưỡng và ngon, để lại vị ngọt ở hậu.
+            Xà lách Romaine: có lá xanh đậm và dài. Nó có kết cấu lá giòn và hương vị đậm đà hơn các loại khác. Là giống xà lách
+            chứa nhiều vitamin A, C, B1 và B2, và acid folic.
+            Xà lách lô lô: là giống cây có lá sắp xếp rời rạc, tán lá rộng và xoăn. Nó có hương vị nhẹ và kết cấu lá hơi giòn.
+        
+            Chuẩn bị ươm hạt giống trước khi trồng xà lách thủy canh
+            Trồng xà lách thủy canh cũng tương tự như trồng các loại rau thủy canh khác. Trước khi đưa xà lách lên hệ thống thủy
+            canh để trồng, ta cần ươm hạt giống nảy mầm trước. Bạn có thể ươm hạt trực tiếp trên những chiếc xốp đã chuẩn bị.
+            Mỗi mút xốp sẽ ươm từ 2 đến 3 hạt giống.
+        
+            Những chiếc mút xốp này cần được làm ẩm cùng với chất nền. Sau khi gieo hạt, cần tưới nước ấm để kích thích hạt nảy
+            mầm.
+        
+            Hướng dẫn kỹ thuật trồng xà lách thủy canh
+            Zako xin chia sẻ đến quý bạn đọc kỹ thuật trồng xà lách thủy canh như sau:
+            Bước 1: chăm sóc cây giống còn nhỏ, để những cây giống con ở nơi có đủ ánh sáng, nhiệt độ khoảng từ 18,3 đến 26,6 độ
+            C. Ươm hạt giống đến khi cây có khoảng 4 lá và cao 5 cm thì tiến hành trồng thủy canh.
+            Bước 2: di chuyển cây giống sang bể chứa. Sau khi ươm thành cây con, bạn cần di chuyển nhẹ nhàng từng cây con vào
+            các các lỗ tại bể chứa hoặc phao nổi. Xà lách là giống cây cần tiếp xúc với ánh sáng huỳnh quang khoảng từ 10 đến 14
+            tiếng mỗi ngày. Vì ánh sáng huỳnh quang là loại tốt nhất cho cây phát triển, tiêu thụ ít năng lượng, ít tỏa nhiệt và
+            chi phí đầu tư thấp.
+            Bước 3: cần duy trì nhiệt độ phù hợp. Rau xà lách là giống ưa lạnh, vì vậy môi trường mát mẻ sẽ giúp cây sinh sôi và
+            phát triển nhanh hơn. Nhiệt độ phù hợp là 23,8 độ C vào ban ngày và 12,7 độ C vào ban đêm.
+        
+            Bước 4: cân chỉnh độ pH. Độ pH lý tưởng để xà lách phát triển là từ 5,5 đến 6,5. Bạn cần kiểm tra thường xuyên độ pH
+            bằng giấy quỳ tím để đảm bảo tính acid ở mức trung bình hoặc nhẹ.
+            Bước 5: thu hoạch xà lách sau 5-6 tuần. Để cây tiếp tục phát triển, bạn nên thu hoạch bằng cách tỉa những lá rau bên
+            ngoài, chừa lại vài chiếc lá bé bên trong. Điều này sẽ giúp bạn có nhiều lứa xà lách và thu hoạch vào mùa sau. Nếu
+            xà lách đã phát triển hết cỡ và bạn chưa muốn ăn ngay. Hãy giữ cho các cây này còn nguyên rễ và bảo quản chúng trong
+            một môi trường ẩm, để có thể giữ chúng tươi trong khoảng thời gian lên đến 1 tháng.
+            Một số lưu ý khi trồng xà lách thủy canh
+            Xà lách là một loại rau ưa lạnh nên trồng từ tháng 10 đến tháng 2 là thích hợp nhất.
+            Nên kiểm tra mực nước thủy canh hàng ngày. Vì rau xà lách sẽ không phát triển nếu rễ cây không được cung cấp đầy đủ
+            nước.
+            Lưu ý, cây trồng thủy canh yêu cầu nước và các chất dinh dưỡng giống như cây trồng trên đất. Bổ sung dung dịch dinh
+            dưỡng thường xuyên cho cây (thông thường 1 lần/tuần) để đảm bảo cung cấp đủ dinh dưỡng cho cây trồng.
+        
+            Dù trồng xà lách thủy canh ở trong nhà hay ngoài nhà, bạn vẫn cần phải quan sát côn trùng như sâu, bọ, rệp, châu
+            chấu, ốc sên, bướm… và bắt chúng ra khỏi lá để chúng không phá hủy rau trồng, không nên sử dụng thuốc bảo vệ thực
+            vật.
+            Nếu trồng xà lách thủy canh ngoài trời, cần bảo vệ cây khỏi trời mưa để tránh nước mưa pha loãng các chất dinh
+            dưỡng.
+            Nếu có điều kiện mỗi tuần một lần nên tiến hành sục khí làm thoáng dung dịch khi cây còn nhỏ và 4-5 ngày khi cây
+            lớn, cây sẽ phát triển tốt hơn. Cần chú ý không để bong bóng khí quá lớn có thể gây tổn thương rễ ảnh hưởng đến sự
+            phát triển của cây.
+          </p>
+        </div>`
+    },
+    {
+        id: 6,
+        name: 'Cần tây',
+        text: `<div>
+        <p style="white-space: pre;">
+          Cách trồng và chăm sóc rau cần tây thủy canh
+          Rau cần tây trồng vào mùa nào?
+          Rau cần tây là loại rau ưa lạnh, có khả năng chịu đựng thấp đối với nhiệt và thích nơi mát mẻ, nhiều mây, nơi mà
+          nhiệt độ khoảng từ 16°C đến 20°C. Nên thời điêm thích hợp nhất để trồng cần tây là vào mùa đông, xuân. Bạn vẫn có
+          thể trồng cần tây vào mùa hè tuy nhiên do thích hợp với khí hậu lạnh nên bạn có thể trồng từ tháng 8 đến tháng 10 và
+          cần lựa chọn các loại hạt giống cần tây chịu nhiệt.
+          Cách trồng rau cần tây thủy canh bằng hạt
+          Bước 1: Gieo hạt
+          Bạn có thể gieo trực tiếp hoặc đem ngâm hạt giống cần tây trong nước ấm (2 sôi, 3 lạnh) khoảng 1 – 2 tiếng rồi vớt
+          ra rửa sạch, ủ vào khăn vải ẩm chờ hạt nứt nanh thì đem gieo. Nên chọn thời điểm mát mẻ để gieo.
+          Bạn có thể lựa chọn giá thể là mút xốp hoặc xơ dừa. Tuy nhiên, nếu trồng bằng xơ dừa thì cây sẽ dễ dàng hấp thu được
+          các dưỡng chất hơn cũng như hấp thu được cả những chất tự nhiên có trong xơ dừa.
+          Nếu giá thể là xơ dừa thì bạn tiến hành làm ẩm viên nén xơ dừa để xơ dừa nở ra. Sau đó cho vào rọ nhựa và làm ẩm bề
+          mặt. Xếp các rọ nhựa vào khay đựng rồi tiến hành gieo hạt. Mỗi rọ nhựa gieo khoảng 2 – 3 hạt, dùng ngón tay ấn nhẹ
+          hạt xuống giữa rọ nhựa. Sau khi gieo xong dùng vòi phun sương làm ẩm bề mặt để hạt có được độ ẩm nhất định. Cung cấp
+          nước cho khay chứa để đảm bảo hạt giống luôn được giữ ẩm.
+          Bước 2: Chuyển giàn
+          Khi cây bắt đầu lên lá mầm thì bạn có thể cung cấp thêm dung dịch thủy canh cho cây mau lớn với nồng độ thấp là
+          300ppm. Chú ý bổ sung nước và dinh dưỡng thường xuyên cho cây trong giai đoạn này. Khi cây bắt đầu ra 3 lá thật thì
+          ta tiến hành chuyển giàn.
+          Đưa cả cây và rọ nhựa lên giàn. Sau đó cung cấp nước và dung dịch thủy canh cho hệ thống để nuôi cây. Nồng độ dung
+          dịch khi này vào khoảng 600ppm.
+          Bước 3: Chăm sóc
+          Bạn nên chú ý cung cấp nước và dinh dưỡng đầy đủ cho cần tây trong tất cả các giai đoạn cây tăng trưởng. Cần tây nếu
+          thiếu nước và dinh dưỡng sẽ trở nên còi cọc, đủ nước sẽ kích thích ra hoa. Tuy nhiên, bạn cũng không cần quá lo lắng
+          rằng ngày nào cũng phải cấp nước và dinh dưỡng cho cây bởi hệ thống thủy canh giữ được nước và dinh dưỡng chứ không
+          như đất. Cây càng lớn mới càng nhiều nước và chất dinh dưỡng nên vài ngày bạn sẽ phải tiếp nước và dung dịch thủy
+          canh một lần.
+          Khi cây mới lên giàn, 5 – 15 ngày mới phải bổ sung dinh dưỡng, nồng độ là 600-800ppm
+          Khi cây trưởng thành, 3 – 5 ngày cần bổ sung dinh dưỡng, nồng độ là 800-1000ppm.
+          Ngoài ra, nên chú ý kiểm tra xem cây có bị sâu hai hoặc các bệnh không. Nếu thấy có cần xử lý ngay để không ảnh
+          hưởng đến toàn bộ vườn cây.
+          Bước 4: Thu hoạch
+          Rau cần tây cho thu hoạch trong vòng 100 – 140 ngày sau khi gieo trồng. Thời gian thu hoạch và chất lượng rau phụ
+          thuộc nhiều vào nhiệt độ, nước và điều kiện chăm sóc. Khi rau cần tây cao khoảng 30 – 45cm thì bạn cắt ngang gốc
+          cách gốc cây 3cm. Khoảng 2 tuần cây sẽ tiếp tục nhú mầm non và phát triển ở giai đoạn tiếp theo nếu bạn muốn tiếp
+          tục trồng cây.
+        </p>
+      </div>`
+    },
+    {
+        id: 7,
+        name: 'Hành tây',
+        text: `<div>
+        <p style="white-space: pre;">
+          Cách trồng và chăm sóc rau cần tây thủy canh
+          Rau cần tây trồng vào mùa nào?
+          Rau cần tây là loại rau ưa lạnh, có khả năng chịu đựng thấp đối với nhiệt và thích nơi mát mẻ, nhiều mây, nơi mà
+          nhiệt độ khoảng từ 16°C đến 20°C. Nên thời điêm thích hợp nhất để trồng cần tây là vào mùa đông, xuân. Bạn vẫn có
+          thể trồng cần tây vào mùa hè tuy nhiên do thích hợp với khí hậu lạnh nên bạn có thể trồng từ tháng 8 đến tháng 10 và
+          cần lựa chọn các loại hạt giống cần tây chịu nhiệt.
+          Cách trồng rau cần tây thủy canh bằng hạt
+          Bước 1: Gieo hạt
+          Bạn có thể gieo trực tiếp hoặc đem ngâm hạt giống cần tây trong nước ấm (2 sôi, 3 lạnh) khoảng 1 – 2 tiếng rồi vớt
+          ra rửa sạch, ủ vào khăn vải ẩm chờ hạt nứt nanh thì đem gieo. Nên chọn thời điểm mát mẻ để gieo.
+          Bạn có thể lựa chọn giá thể là mút xốp hoặc xơ dừa. Tuy nhiên, nếu trồng bằng xơ dừa thì cây sẽ dễ dàng hấp thu được
+          các dưỡng chất hơn cũng như hấp thu được cả những chất tự nhiên có trong xơ dừa.
+          Nếu giá thể là xơ dừa thì bạn tiến hành làm ẩm viên nén xơ dừa để xơ dừa nở ra. Sau đó cho vào rọ nhựa và làm ẩm bề
+          mặt. Xếp các rọ nhựa vào khay đựng rồi tiến hành gieo hạt. Mỗi rọ nhựa gieo khoảng 2 – 3 hạt, dùng ngón tay ấn nhẹ
+          hạt xuống giữa rọ nhựa. Sau khi gieo xong dùng vòi phun sương làm ẩm bề mặt để hạt có được độ ẩm nhất định. Cung cấp
+          nước cho khay chứa để đảm bảo hạt giống luôn được giữ ẩm.
+          Bước 2: Chuyển giàn
+          Khi cây bắt đầu lên lá mầm thì bạn có thể cung cấp thêm dung dịch thủy canh cho cây mau lớn với nồng độ thấp là
+          300ppm. Chú ý bổ sung nước và dinh dưỡng thường xuyên cho cây trong giai đoạn này. Khi cây bắt đầu ra 3 lá thật thì
+          ta tiến hành chuyển giàn.
+          Đưa cả cây và rọ nhựa lên giàn. Sau đó cung cấp nước và dung dịch thủy canh cho hệ thống để nuôi cây. Nồng độ dung
+          dịch khi này vào khoảng 600ppm.
+          Bước 3: Chăm sóc
+          Bạn nên chú ý cung cấp nước và dinh dưỡng đầy đủ cho cần tây trong tất cả các giai đoạn cây tăng trưởng. Cần tây nếu
+          thiếu nước và dinh dưỡng sẽ trở nên còi cọc, đủ nước sẽ kích thích ra hoa. Tuy nhiên, bạn cũng không cần quá lo lắng
+          rằng ngày nào cũng phải cấp nước và dinh dưỡng cho cây bởi hệ thống thủy canh giữ được nước và dinh dưỡng chứ không
+          như đất. Cây càng lớn mới càng nhiều nước và chất dinh dưỡng nên vài ngày bạn sẽ phải tiếp nước và dung dịch thủy
+          canh một lần.
+          Khi cây mới lên giàn, 5 – 15 ngày mới phải bổ sung dinh dưỡng, nồng độ là 600-800ppm
+          Khi cây trưởng thành, 3 – 5 ngày cần bổ sung dinh dưỡng, nồng độ là 800-1000ppm.
+          Ngoài ra, nên chú ý kiểm tra xem cây có bị sâu hai hoặc các bệnh không. Nếu thấy có cần xử lý ngay để không ảnh
+          hưởng đến toàn bộ vườn cây.
+          Bước 4: Thu hoạch
+          Rau cần tây cho thu hoạch trong vòng 100 – 140 ngày sau khi gieo trồng. Thời gian thu hoạch và chất lượng rau phụ
+          thuộc nhiều vào nhiệt độ, nước và điều kiện chăm sóc. Khi rau cần tây cao khoảng 30 – 45cm thì bạn cắt ngang gốc
+          cách gốc cây 3cm. Khoảng 2 tuần cây sẽ tiếp tục nhú mầm non và phát triển ở giai đoạn tiếp theo nếu bạn muốn tiếp
+          tục trồng cây.
+      
+           
+          7. Hành tây
+          Chuẩn bị giống hành tây
+          Chọn giống hành tây phù hợp với điều kiện khí hậu và đất đai của vùng trồng. Có thể sử dụng giống hành tây củ, giống
+          hành tây lá hoặc giống hành tây lai.
+          Mua giống hành tây từ các cơ sở uy tín, đảm bảo chất lượng và sạch bệnh. Nếu có thể, nên chọn giống hành tây đã được
+          xử lý nhiệt để giảm nguy cơ nhiễm bệnh.
+          Ướp giống hành tây trong dung dịch dinh dưỡng thủy canh có độ pH từ 5,5 đến 6,5 và PPm từ 600-900. trong khoảng 12
+          đến 24 giờ trước khi trồng.
+          Trồng và chăm sóc hành tây
+          Sử dụng các loại vật liệu trồng thủy canh như xơ dừa, than hoạt tính, sỏi nhẹ hoặc bông thủy tinh để làm nền trồng
+          cho hành tây. Cần đảm bảo vật liệu trồng có khả năng thoát nước tốt và không chứa các chất gây ô nhiễm.
+          Trồng giống hành tây vào các lỗ trên vật liệu trồng, cách nhau khoảng 10 đến 15 cm. Nếu trồng hành tây lá, có thể để
+          cách nhau ít hơn để thu hoạch non.
+          Cung cấp dung dịch dinh dưỡng thủy canh cho hành tây theo phương pháp nhỏ giọt, mưa phun hoặc ngập rễ. Dung dịch
+          dinh dưỡng cần có độ pH từ 5,5 đến 6,5 và PPm từ 600-900. Nên thay dung dịch dinh dưỡng mới sau mỗi tuần để đảm bảo
+          cung cấp đủ chất dinh dưỡng cho cây.
+          Kiểm tra và phòng trừ các loại sâu bệnh có thể gây hại cho hành tây như rầy xanh, rệp sáp, bọ trĩ, thrips, bệnh mốc
+          xám, bệnh mốc nâu hoặc bệnh phấn trắng. Nên sử dụng các biện pháp sinh học hoặc hữu cơ để bảo vệ môi trường và an
+          toàn cho người tiêu dùng.
+          Thu hoạch hành tây
+      
+          Hành tây thường được thu hoạch khi lá vàng úa và gập xuống. Thời gian thu hoạch phụ thuộc vào giống hành tây và điều
+          kiện khí hậu. Thông thường, hành tây có thể thu hoạch sau 3-4 tháng trồng. Khi thu hoạch, cần cẩn thận để không làm
+          rách vỏ hành tây, vì điều này sẽ làm giảm khả năng bảo quản. Sau khi thu hoạch, cần phơi hành tây dưới ánh nắng mặt
+          trời trong vài ngày để làm khô vỏ và rễ.
+          Những lưu ý khi trồng hành tây thủy canh
+      
+          Hành tây thủy canh là một phương pháp trồng hành tây hiệu quả, tiết kiệm không gian và nước. Tuy nhiên, cũng cần chú
+          ý một số điểm sau khi trồng hành tây thủy canh:
+          Chọn giống hành tây phù hợp với điều kiện khí hậu và độ dài ngày của khu vực.
+          Cung cấp đủ ánh sáng, nhiệt độ và độ ẩm cho hành tây phát triển tốt.
+          Duy trì nồng độ dinh dưỡng và pH trong dung dịch nuôi thích hợp cho hành tây.
+          Kiểm tra và thay thế dung dịch nuôi định kỳ để tránh ô nhiễm và thiếu hụt dinh dưỡng.
+          Phòng trừ và kiểm soát các bệnh và sâu hại có thể ảnh hưởng đến hành tây.
+        </p>
+      </div>`
+    },
+    {
+        id: 8,
+        name: 'Hành lá',
+        text: `<div>
+        <p style="white-space: pre;">
+          Hành lá pH=6-7, ppm= 600-900
+          Thu hoạch
+          Sau 07 ngày kể từ khi tiến hành trồng, cây hành lá sẽ bắt đầu có chồi và chuẩn bị phát triển thành ngọn xanh. Và sau
+          14 ngày, lúc này thân hành đã mọc lên cao và sẵn sàng để bạn thu hoạch.
+          Để tiếp tục trồng hành lá theo thủy canh, bạn chỉ cắt phần lá phát triển ở phía trên sử dụng và giữ phần gốc để tiếp
+          tục nuôi dưỡng.
+          Những lưu ý khi trồng hành lá thủy canh
+          Cách trồng hành thủy canh nhìn chung khá dễ thực hiện và không tốn quá nhiều chi phí đầu tư cũng như công sức chăm
+          sóc. Tuy nhiên, để cây hành lá phát triển xanh tốt và duy trì lâu dài bạn cũng cần lưu ý một số vấn đề sau đây:
+          Luôn đảm bảo cây có đủ lượng nước cần thiết và bổ sung ngay khi nhận thấy nước trong chai nhựa bị cạn.
+          Lượng nước trong chai luôn phải cao hơn rễ của cây hành.
+          Thay nước cho cây với tần suất hợp lý từ 2 - 3 ngày một lần.
+          Sau khi thu hoạch lá khoảng từ 02 - 03 lần có thể bón thêm phân hữu cơ cho cây bằng cách hòa tan phân với nước rồi
+          tưới để bổ sung thêm chất dinh dưỡng cho cây.
+      
+        </p>
+      </div>`
+    }
+]
+
+let chosingList = document.getElementById('chosingList');
+for (let index = 0; index < treeData.length; index++) {
+  let item = document.createElement('div');
+  item.classList.add('chosing-item');
+  item.id = 'chosingItem' + treeData[index].id;
+  item.innerHTML = `
+    <img src="/images/chosing/${treeData[index].id}.jpg" alt="">
+    <p>${treeData[index].name}</p>
+  `;
+  item.addEventListener('click', () => {
+    chosingList.querySelectorAll('.chosing-item').forEach(item => item.setAttribute('target', 'false'));
+    item.setAttribute('target', 'true');
+    changeChosingUI(chosingList.querySelectorAll('.chosing-item'));
+  });
+  chosingList.appendChild(item);
+}
+</script>
+
 <script>
   setTimeout(() => {
 
@@ -112,18 +477,6 @@
       chosingRight.style.display = 'none';
     }
   }
-
-  function chosingItem() {
-    let items = document.querySelectorAll('.chosing-item');
-    items.forEach(item => {
-      item.addEventListener('click', () => {
-        items.forEach(item => item.setAttribute('target', 'false'));
-        item.setAttribute('target', 'true');
-        changeChosingUI(items);
-      });
-    });
-  }
-  chosingItem();
 
   function chosen() {
     let submit = document.getElementById('chosingSubmit');
