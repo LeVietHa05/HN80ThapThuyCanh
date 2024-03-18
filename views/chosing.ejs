@@ -17,19 +17,7 @@
 
     <div id="chosingInfo">
       <h2 class="font-1-25vw text-center">Thông tin sinh trưởng của cây</h2>
-      <div>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, quidem minus tempore quod
-        natus
-        ipsa dolorem impedit, voluptatem, odio illum minima veritatis et atque laborum quisquam dolore! Ea,
-        aliquam a.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, maiores ducimus similique adipisci
-        fugiat quisquam, temporibus expedita, nisi recusandae deserunt sapiente veritatis amet! Voluptas,
-        vel
-        libero explicabo qui possimus nesciunt.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut sit cumque ipsa sunt corporis quod nisi
-        itaque dolore ducimus tempora, doloremque natus quibusdam, aliquam, veritatis expedita tempore
-        nostrum
-        non soluta.
+      <div id="chosingInfoDetail">
       </div>
     </div>
 
@@ -142,7 +130,7 @@
         id: 3,
         name: 'Rau cải ngọt',
         text: `<div>
-        <p style="white-space: pre;">Cải ngọt: Cải ngọt là một trong những loại quen thuộc được nhiều người ưa thích. Không chỉ có hương vị thơm ngon,
+        <p>Cải ngọt: Cải ngọt là một trong những loại quen thuộc được nhiều người ưa thích. Không chỉ có hương vị thơm ngon,
           cải ngọt còn được biết đến với những tác dụng có lợi cho sức khỏe như: chữa các chứng ho, táo bón, phòng ngừa bệnh
           trĩ, ung thư ruột kết, ung thư gan,…
           Chọn hạt giống cây cải ngọt:
@@ -199,7 +187,7 @@
         id: 4,
         name: 'Cải bó xôi',
         text: `<div>
-        <p style="white-space: pre;">Cải bó xôi: Việc trồng cải bó xôi bằng phương pháp thủy canh sẽ giúp rau sinh trưởng và
+        <p>Cải bó xôi: Việc trồng cải bó xôi bằng phương pháp thủy canh sẽ giúp rau sinh trưởng và
           phát triển nhanh hơn, hạn chế sự xâm nhập của sâu bệnh, đặc biệt là không cần đến sự hỗ trợ của đất.
           Việc trồng cải bó xôi bằng phương pháp thủy canh sẽ giúp rau sinh trưởng và phát triển nhanh hơn, hạn chế sự xâm
           nhập của sâu bệnh, đặc biệt là không cần đến sự hỗ trợ của đất.
@@ -228,7 +216,7 @@
         name: 'Xà lách',
         text: `
         <div>
-          <p style="white-space: pre;">
+          <p>
             Xà lách: Xà lách có thể trồng được quanh năm. Tuy nhiên, tại những tháng có khí hậu mát mẻ thì năng suất của xà lách
             có thể tốt hơn. Thời gian sinh trưởng thông thường của xà lách là khoảng từ 40 -60 ngày tùy từng loại.
             Lựa chọn giống rau xà lách để trồng thủy canh
@@ -292,7 +280,7 @@
         id: 6,
         name: 'Cần tây',
         text: `<div>
-        <p style="white-space: pre;">
+        <p>
           Cách trồng và chăm sóc rau cần tây thủy canh
           Rau cần tây trồng vào mùa nào?
           Rau cần tây là loại rau ưa lạnh, có khả năng chịu đựng thấp đối với nhiệt và thích nơi mát mẻ, nhiều mây, nơi mà
@@ -337,7 +325,7 @@
         id: 7,
         name: 'Hành tây',
         text: `<div>
-        <p style="white-space: pre;">
+        <p>
           Cách trồng và chăm sóc rau cần tây thủy canh
           Rau cần tây trồng vào mùa nào?
           Rau cần tây là loại rau ưa lạnh, có khả năng chịu đựng thấp đối với nhiệt và thích nơi mát mẻ, nhiều mây, nơi mà
@@ -418,7 +406,7 @@
         id: 8,
         name: 'Hành lá',
         text: `<div>
-        <p style="white-space: pre;">
+        <p>
           Hành lá pH=6-7, ppm= 600-900
           Thu hoạch
           Sau 07 ngày kể từ khi tiến hành trồng, cây hành lá sẽ bắt đầu có chồi và chuẩn bị phát triển thành ngọn xanh. Và sau
@@ -444,6 +432,7 @@ for (let index = 0; index < treeData.length; index++) {
   let item = document.createElement('div');
   item.classList.add('chosing-item');
   item.id = 'chosingItem' + treeData[index].id;
+  item.style.overflowY = 'scroll';
   item.innerHTML = `
     <img src="/images/chosing/${treeData[index].id}.jpg" alt="">
     <p>${treeData[index].name}</p>
@@ -452,6 +441,8 @@ for (let index = 0; index < treeData.length; index++) {
     chosingList.querySelectorAll('.chosing-item').forEach(item => item.setAttribute('target', 'false'));
     item.setAttribute('target', 'true');
     changeChosingUI(chosingList.querySelectorAll('.chosing-item'));
+    let message = document.getElementById('chosingInfoDetail');
+    message.innerHTML = treeData.find(tree => tree.id === treeData[index].id).text;
   });
   chosingList.appendChild(item);
 }
