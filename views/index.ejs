@@ -564,11 +564,14 @@
       </div>`
         }
         ]
-
-        let treeName = document.getElementById('treeName').textContent;
-        let tree = treeData.find(tree => tree.name === treeName);
-        let treeInfoContent = document.getElementById('treeInfoContent');
-        treeInfoContent.innerHTML = tree.text;
+        if (document.getElementById('treeName')) {
+            let treeName = document.getElementById('treeName').textContent;
+            let tree = treeData.find(tree => tree.name === treeName);
+            let treeInfoContent = document.getElementById('treeInfoContent');
+            treeInfoContent.innerHTML = tree.text;
+        } else {
+            gotoChosing();
+        }
 
         function scroll() {
             let scrollDownBtn = document.getElementById('scrollDownBtn');
