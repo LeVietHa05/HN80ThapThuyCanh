@@ -37,13 +37,13 @@ router.post('/register', async function (req, res, next) {
         else {
             var newUser = new AccData({ username: username, password: password, role: "user" });
             newUser.save();
-            res.render('chosing', { title: 'Express', message: "Register success! Choose your tree" });
+            res.render('chosing', { title: 'Express', message: "Register success! Choose your tree", userid: newUser.id });
         }
     }
 });
 
 router.get('/chosing', function (req, res, next) {
-    res.render('chosing', { title: 'Express', message: "" });
+    res.render('chosing', { title: 'Express', message: "", userid: "" });
 });
 
 router.post('/chosing', async function (req, res, next) {
